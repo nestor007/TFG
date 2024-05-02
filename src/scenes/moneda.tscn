@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx4ffbf8mw1co"]
+
+[ext_resource type="PackedScene" uid="uid://ij6btn82ov3x" path="res://src/modelos/moneda_peque.glb" id="1_a8ahd"]
+[ext_resource type="Script" path="res://src/scenes/moneda.gd" id="2_ct2iy"]
+
+[node name="moneda_peque" instance=ExtResource("1_a8ahd")]
+script = ExtResource("2_ct2iy")

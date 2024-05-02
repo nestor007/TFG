@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2xy3aynvpsox"]
+
+[ext_resource type="Script" path="res://src/scripts/EscenaCielo.gd" id="1_tdte3"]
+[ext_resource type="Texture2D" uid="uid://4s6mf8l678jd" path="res://src/hdris/sphere_2.hdr" id="2_e0isx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldokd"]
+albedo_texture = ExtResource("2_e0isx")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
+material = SubResource("StandardMaterial3D_ldokd")
+flip_faces = true
+
+[node name="EscenaCielo" type="Node3D"]
+script = ExtResource("1_tdte3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7ywa3")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 97.0
+offset_bottom = 26.0
+text = "This is a text"
+
+[node name="Button" type="Button" parent="."]
+offset_right = 97.0
+offset_bottom = 31.0
+text = "Next Image"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

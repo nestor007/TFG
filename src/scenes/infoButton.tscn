@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://didkxmxjo0jkk"]
+
+[ext_resource type="Script" path="res://src/scripts/infoButton.gd" id="1_v0cxl"]
+[ext_resource type="Texture2D" uid="uid://d3ofyq883qunt" path="res://src/images/warning_6897039.png" id="2_hb7qk"]
+[ext_resource type="PackedScene" uid="uid://cx4ffbf8mw1co" path="res://src/scenes/moneda.tscn" id="3_5xsvd"]
+
+[node name="infoButton" type="Node3D"]
+script = ExtResource("1_v0cxl")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 97.0
+offset_bottom = 26.0
+text = "This is a text"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 380.0
+offset_top = 2.0
+offset_right = 900.0
+offset_bottom = 522.0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("2_hb7qk")
+
+[node name="moneda_peque" parent="." instance=ExtResource("3_5xsvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.167887)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

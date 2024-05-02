@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0hpdfsjee2d3"]
+
+[ext_resource type="Texture2D" uid="uid://b6x1yleocnuc" path="res://src/hdris/snowy_forest_4k.hdr" id="2_qushl"]
+
+[sub_resource type="GDScript" id="GDScript_f660j"]
+script/source = "extends Escena
+
+func _init():
+	super._init()
+	var textos = [\"prueba1\", \"prueba2\", \"prueba3\"]
+	infoButtonsManager(textos)
+
+func _on_button_pressed():
+	site_interacted.emit(\"res://src/scenes/EscenaCielo.tscn\")
+
+func infoButtonsManager(texto: Array):
+	var cont = 0
+	var cont2 = 0
+	for info in texto:
+		var newChild = load(\"res://src/scenes/infoButton.tscn\").instantiate()
+		if newChild is Info:
+			var posLabel = Vector3(0,-0.27,-0.26)
+			var posButton = Vector2(380,2)
+			posLabel.y += cont
+			posButton.x += cont2
+			cont += 0.27
+			cont2 += 150
+			newChild.init(info, posLabel)
+			newChild.findButton().set_global_position(posButton)
+		add_child(newChild)
+		newChild.info_displayed.connect(_on_generate_info)
+	
+func _on_generate_info(scene):
+	\"\"\"
+	for child in get_children():
+		if child is Info:
+			remove_child(child)
+	
+	var newChild = load(scene).instantiate()
+	add_child(newChild)
+	newChild.info_displayed.connect(_on_generate_info)
+	\"\"\"
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldokd"]
+albedo_texture = ExtResource("2_qushl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
+material = SubResource("StandardMaterial3D_ldokd")
+flip_faces = true
+
+[node name="EscenaBosque" type="Node3D"]
+script = SubResource("GDScript_f660j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7ywa3")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 97.0
+offset_bottom = 26.0
+text = "This is a text"
+
+[node name="Button" type="Button" parent="."]
+offset_right = 97.0
+offset_bottom = 31.0
+text = "Next Image"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
