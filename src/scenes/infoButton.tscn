@@ -22,6 +22,6 @@ scale = Vector2(0.1, 0.1)
 icon = ExtResource("2_hb7qk")
 
 [node name="moneda_peque" parent="." instance=ExtResource("3_5xsvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.167887)
+transform = Transform3D(-0.000634627, 1.34632e-05, 1, -0.00132155, 0.999999, -1.43004e-05, -0.999999, -0.00132156, -0.000634609, 0.30149, 0, 0.0182609)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
