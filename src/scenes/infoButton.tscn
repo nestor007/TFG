@@ -1,27 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://didkxmxjo0jkk"]
 
 [ext_resource type="Script" path="res://src/scripts/infoButton.gd" id="1_v0cxl"]
-[ext_resource type="Texture2D" uid="uid://d3ofyq883qunt" path="res://src/images/warning_6897039.png" id="2_hb7qk"]
-[ext_resource type="PackedScene" uid="uid://cx4ffbf8mw1co" path="res://src/scenes/moneda.tscn" id="3_5xsvd"]
+[ext_resource type="PackedScene" uid="uid://bof7rc3qsc3lo" path="res://src/scenes/moneda.tscn" id="3_5xsvd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qstq2"]
 
 [node name="infoButton" type="Node3D"]
 script = ExtResource("1_v0cxl")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 97.0
-offset_bottom = 26.0
-text = "This is a text"
-
-[node name="Button" type="Button" parent="."]
-offset_left = 380.0
-offset_top = 2.0
-offset_right = 900.0
-offset_bottom = 522.0
-scale = Vector2(0.1, 0.1)
-icon = ExtResource("2_hb7qk")
-
 [node name="moneda_peque" parent="." instance=ExtResource("3_5xsvd")]
-transform = Transform3D(-0.000634627, 1.34632e-05, 1, -0.00132155, 0.999999, -1.43004e-05, -0.999999, -0.00132156, -0.000634609, 0.30149, 0, 0.0182609)
+transform = Transform3D(0.0750309, 0.000130954, 0.997181, -0.00174533, 0.999998, 0, -0.99718, -0.00174041, 0.075031, 0, 0, 0)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="moneda3D" type="StaticBody3D" parent="moneda_peque"]
+transform = Transform3D(1, 0, 0, 1.16415e-10, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moneda_peque/moneda3D"]
+transform = Transform3D(-1.09139e-09, -0.025, 0, 0.025, -1.09503e-09, 0, 0, 0, 0.025, 0, 0, 0)
+shape = SubResource("SphereShape3D_qstq2")
+
+[connection signal="input_event" from="moneda_peque/moneda3D" to="." method="_on_click_in_3DObject"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c106oswsu86dw"]
+[gd_scene load_steps=3 format=3 uid="uid://ch7spak3eu2ts"]
 
-[ext_resource type="Script" path="res://src/scripts/movimiento.gd" id="1_4n3ph"]
+[ext_resource type="Script" path="res://src/scripts/world.gd" id="1_noyow"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/EscenaBosque.tscn" id="4_dlgtn"]
 
 [node name="esfera" type="Node3D"]
-script = ExtResource("1_4n3ph")
+script = ExtResource("1_noyow")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
