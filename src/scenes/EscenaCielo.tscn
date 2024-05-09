@@ -1,29 +1,136 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2xy3aynvpsox"]
+[gd_scene load_steps=21 format=3 uid="uid://wjxd5oxkn32e"]
 
-[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_b38km"]
-[ext_resource type="Texture2D" uid="uid://4s6mf8l678jd" path="res://src/hdris/sphere_2.hdr" id="2_e0isx"]
-[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="3_2y0lo"]
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_cd2hk"]
+[ext_resource type="Texture2D" uid="uid://4s6mf8l678jd" path="res://src/hdris/sphere_2.hdr" id="2_af3yb"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_pi1ji"]
+[ext_resource type="Shader" path="res://src/shaders/prueba.gdshader" id="4_ngg6w"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_lo1or"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldokd"]
-albedo_texture = ExtResource("2_e0isx")
+albedo_texture = ExtResource("2_af3yb")
 
 [sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
 material = SubResource("StandardMaterial3D_ldokd")
 flip_faces = true
 
-[node name="EscenaCielo" type="Node3D"]
-script = ExtResource("1_b38km")
+[sub_resource type="Gradient" id="Gradient_oeju5"]
+offsets = PackedFloat32Array(0.48, 0.6)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_janux"]
+gradient = SubResource("Gradient_oeju5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_tlbw3"]
+_data = [Vector2(0.00258398, 0), 0.0, 0.0, 0, 0, Vector2(0.671835, 0.445455), -0.413903, -0.413903, 0, 0, Vector2(1, 0.990909), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwomg"]
+texture_mode = 1
+curve = SubResource("Curve_tlbw3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_53klj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cgnc1"]
+seamless = true
+noise = SubResource("FastNoiseLite_53klj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a3wdr"]
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ai1n1"]
+seamless = true
+noise = SubResource("FastNoiseLite_a3wdr")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_em7av"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ro5p"]
+seamless = true
+noise = SubResource("FastNoiseLite_em7av")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhfne"]
+shader = ExtResource("4_ngg6w")
+shader_parameter/clouds_samples = 32
+shader_parameter/shadow_sample = 4
+shader_parameter/clouds_density = 0.4
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_smoothness = 0.03
+shader_parameter/clouds_light_color = Color(0.266667, 0.266667, 0.266667, 1)
+shader_parameter/clouds_shadow_intensity = 3.5
+shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_ai1n1")
+shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_cgnc1")
+shader_parameter/cloud_curves = SubResource("CurveTexture_pwomg")
+shader_parameter/high_clouds_density = 0.2
+shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_7ro5p")
+shader_parameter/top_color = Color(0.34902, 0.588235, 1, 1)
+shader_parameter/bottom_color = Color(0, 0.329412, 0.968627, 1)
+shader_parameter/sun_scatter = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/astro_tint = Color(0.905882, 0.788235, 0.627451, 1)
+shader_parameter/astro_scale = 9.0
+shader_parameter/astro_intensity = 3.0
+shader_parameter/astro_sampler = SubResource("GradientTexture2D_janux")
+shader_parameter/stars_intensity = 0.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = null
+
+[sub_resource type="Sky" id="Sky_njapg"]
+sky_material = SubResource("ShaderMaterial_bhfne")
+
+[sub_resource type="Environment" id="Environment_vofrr"]
+background_mode = 2
+background_energy_multiplier = 2.05
+sky = SubResource("Sky_njapg")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_sky_affect = 0.081
+
+[node name="EscenaBosque" type="Node3D"]
+script = ExtResource("1_cd2hk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_7ywa3")
 
-[node name="tp" parent="." instance=ExtResource("3_2y0lo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200478, -0.0649162, -0.267368)
+[node name="infoButton" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_pi1ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
+label = NodePath("Label3D")
+
+[node name="Label3D" type="Label3D" parent="infoButton"]
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "PACO"
+
+[node name="infoButton2" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_pi1ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
+label = NodePath("Label3D")
+
+[node name="Label3D" type="Label3D" parent="infoButton2"]
+transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -0.0398523, 0.0525687, -0.00802077)
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "PACO"
+
+[node name="infoButton3" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_pi1ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
+label = NodePath("Label3D")
+
+[node name="Label3D" type="Label3D" parent="infoButton3"]
+transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 0.00907996, 0.0646458, 0.00263986)
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "PACO"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vofrr")
+
+[node name="tp" parent="." instance=ExtResource("5_lo1or")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200478, -0.0649162, 0.321527)
 scene = "res://src/scenes/EscenaBosque.tscn"
 
-[node name="tp2" parent="." instance=ExtResource("3_2y0lo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186595, -0.0671556, 0.146781)
-scene = "res://src/scenes/EscenaBosque.tscn"
+[node name="tp2" parent="." instance=ExtResource("5_lo1or")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169576, -0.0446179, -0.250391)
+scene = "res://src/scenes/EscenaPlaya.tscn"
 
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
 [connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]

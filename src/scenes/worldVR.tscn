@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmlu6bb5y5hfs"]
+
+[ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
+[ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/EscenaBosque.tscn" id="2_hkaxf"]
+[ext_resource type="PackedScene" uid="uid://udaqemua364r" path="res://src/scenes/player.tscn" id="3_r3fbl"]
+
+[node name="worldVR" type="Node3D"]
+script = ExtResource("1_nyoc8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="EscenaBosque" parent="." instance=ExtResource("2_hkaxf")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393677, 0)
+light_energy = 0.319
+
+[node name="Player" parent="." instance=ExtResource("3_r3fbl")]
+
+[connection signal="site_interacted" from="EscenaBosque" to="." method="_on_change_Scene_interacted"]

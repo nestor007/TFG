@@ -52,10 +52,6 @@ noise = SubResource("FastNoiseLite_em7av")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhfne"]
 shader = ExtResource("5_vvye1")
-shader_parameter/astro_tint = Color(0.905882, 0.788235, 0.627451, 1)
-shader_parameter/astro_scale = 9.0
-shader_parameter/astro_intensity = 3.0
-shader_parameter/astro_sampler = SubResource("GradientTexture2D_janux")
 shader_parameter/clouds_samples = 32
 shader_parameter/shadow_sample = 4
 shader_parameter/clouds_density = 0.4
@@ -68,12 +64,16 @@ shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_cgnc1")
 shader_parameter/cloud_curves = SubResource("CurveTexture_pwomg")
 shader_parameter/high_clouds_density = 0.2
 shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_7ro5p")
-shader_parameter/shooting_stars_intensity = 0.0
-shader_parameter/shooting_star_tint = null
 shader_parameter/top_color = Color(0.34902, 0.588235, 1, 1)
 shader_parameter/bottom_color = Color(0, 0.329412, 0.968627, 1)
 shader_parameter/sun_scatter = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/astro_tint = Color(0.905882, 0.788235, 0.627451, 1)
+shader_parameter/astro_scale = 9.0
+shader_parameter/astro_intensity = 3.0
+shader_parameter/astro_sampler = SubResource("GradientTexture2D_janux")
 shader_parameter/stars_intensity = 0.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = null
 
 [sub_resource type="Sky" id="Sky_njapg"]
 sky_material = SubResource("ShaderMaterial_bhfne")
@@ -83,6 +83,8 @@ background_mode = 2
 background_energy_multiplier = 2.05
 sky = SubResource("Sky_njapg")
 ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_sky_affect = 0.081
 
 [node name="EscenaBosque" type="Node3D"]
 script = ExtResource("1_hj0kw")
@@ -95,29 +97,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
 label = NodePath("Label3D")
 
 [node name="Label3D" type="Label3D" parent="infoButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11885, -0.0370753)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "PACO"
+text = "sos un boludo raul"
+font_size = 12
 
 [node name="infoButton2" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
-label = NodePath("Label3D")
+label = NodePath("Label3D2")
 
-[node name="Label3D" type="Label3D" parent="infoButton2"]
+[node name="Label3D2" type="Label3D" parent="infoButton2"]
 transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -0.0398523, 0.0525687, -0.00802077)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "PACO"
+text = "Guren best borracha"
+font_size = 12
 
 [node name="infoButton3" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
-label = NodePath("Label3D")
+label = NodePath("Label3D3")
 
-[node name="Label3D" type="Label3D" parent="infoButton3"]
+[node name="Label3D3" type="Label3D" parent="infoButton3"]
 transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 0.00907996, 0.0646458, 0.00263986)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "PACO"
+text = "prendan fuego
+a la RENFE"
+font_size = 12
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vofrr")
@@ -128,7 +135,7 @@ scene = "res://src/scenes/EscenaCielo.tscn"
 
 [node name="tp2" parent="." instance=ExtResource("5_p7ab3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186595, -0.0671556, 0.277087)
-scene = "res://src/scenes/EscenaCielo.tscn"
+scene = "res://src/scenes/EscenaCampo.tscn"
 
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
 [connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]

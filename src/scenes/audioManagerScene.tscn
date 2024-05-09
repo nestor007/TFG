@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbygbkkppcbnn"]
+
+[ext_resource type="AudioStream" uid="uid://bog3lraihh43d" path="res://src/sounds/music.mp3" id="1_7kns8"]
+[ext_resource type="Script" path="res://src/scripts/audioManager.gd" id="1_n16l0"]
+
+[node name="audioManager" type="Node"]
+script = ExtResource("1_n16l0")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("1_7kns8")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+autoplay = true
+bus = &"SFX"

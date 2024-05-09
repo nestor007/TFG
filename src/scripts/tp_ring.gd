@@ -1,5 +1,5 @@
 extends Node3D
 
-func _init():
+func _ready():
 	var rotacion: AnimationPlayer = $rotacion
-	#rotacion.play("rotacion")
+	rotacion.play("rotacion")

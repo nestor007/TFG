@@ -5,7 +5,19 @@ extends Node3D
 
 var last_x = 0
 var last_y = 0
+var interface: XRInterface
 
+func _ready() -> void:
+	AudioManagerScene.play_music("res://src/sounds/music.mp3")
+	AudioManagerScene.play_sfx("res://src/sounds/ambiental 1.wav")
+	
+	if self.name == "worldVR":
+		interface = XRServer.find_interface("OpenXR")
+		if interface and interface.is_initialized():
+			print("va")
+			get_viewport().use_xr = true
+			
+			
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)

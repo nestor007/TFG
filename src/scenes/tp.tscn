@@ -1,17 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1s6ks4ddkhk4"]
+[gd_scene load_steps=4 format=3 uid="uid://c1s6ks4ddkhk4"]
 
 [ext_resource type="Script" path="res://src/scripts/tp.gd" id="1_ylsed"]
 [ext_resource type="PackedScene" uid="uid://dxpy2iqnu2mmd" path="res://src/scenes/tp_ring.tscn" id="2_klqe4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a14vc"]
-
-[sub_resource type="Animation" id="Animation_lkyli"]
-resource_name = "rotacion"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nu8p"]
-_data = {
-"rotacion": SubResource("Animation_lkyli")
-}
 
 [node name="tp" type="Node3D"]
 script = ExtResource("1_ylsed")
@@ -23,10 +15,5 @@ script = ExtResource("1_ylsed")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tpRing/StaticBody3D"]
 transform = Transform3D(0.0472555, 0, 0, 0, 0.0472555, 0, 0, 0, 0.0472555, 0, 0, 0)
 shape = SubResource("SphereShape3D_a14vc")
-
-[node name="rotacion" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_1nu8p")
-}
 
 [connection signal="input_event" from="tpRing/StaticBody3D" to="." method="_on_static_body_3d_input_event"]
