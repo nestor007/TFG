@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo4thvfoc1abu"
 path.bptc="res://.godot/imported/sandsloot_4k.hdr-23bcd26ce86b28520f4575a274c92eb9.bptc.ctex"
+path.astc="res://.godot/imported/sandsloot_4k.hdr-23bcd26ce86b28520f4575a274c92eb9.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/hdris/sandsloot_4k.hdr"
-dest_files=["res://.godot/imported/sandsloot_4k.hdr-23bcd26ce86b28520f4575a274c92eb9.bptc.ctex"]
+dest_files=["res://.godot/imported/sandsloot_4k.hdr-23bcd26ce86b28520f4575a274c92eb9.bptc.ctex", "res://.godot/imported/sandsloot_4k.hdr-23bcd26ce86b28520f4575a274c92eb9.astc.ctex"]
 
 [params]
 

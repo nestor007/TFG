@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c412lnrufpner"]
+[gd_scene load_steps=3 format=3 uid="uid://c412lnrufpner"]
 
 [ext_resource type="Theme" uid="uid://b42r4b6d70ydn" path="res://src/themes/contro_theme.tres" id="1_fdyev"]
-[ext_resource type="Script" path="res://src/scenes/options.gd" id="2_l33n1"]
-[ext_resource type="PackedScene" uid="uid://b56cfu3pdg7uq" path="res://src/scenes/volume_slider.tscn" id="2_vt5us"]
-[ext_resource type="Texture2D" uid="uid://cp4nne71i30h" path="res://src/images/sound_off.png" id="3_wy3m1"]
+[ext_resource type="PackedScene" uid="uid://d1a7w42kjcwjd" path="res://src/scenes/volumeSlider.tscn" id="3_fwci8"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -20,19 +18,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_fdyev")
-script = ExtResource("2_l33n1")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.22
+anchor_top = 0.132
 anchor_right = 0.5
-anchor_bottom = 0.22
+anchor_bottom = 0.132
 offset_left = -220.5
-offset_top = 0.139481
+offset_top = 0.140511
 offset_right = 220.5
-offset_bottom = 302.139
+offset_bottom = 397.141
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -54,7 +51,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label4" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="titulo" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "VOLUME"
 horizontal_alignment = 1
@@ -62,22 +59,12 @@ horizontal_alignment = 1
 [node name="master volume text" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "
-Master Volume"
+General Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="master volume" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_fwci8")]
 layout_mode = 2
-
-[node name="master volume slider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_vt5us")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 bus_name = "Master"
-
-[node name="master volume button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_wy3m1")
-flat = true
 
 [node name="music volume text" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,19 +72,9 @@ text = "
 Music Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="music volume" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_fwci8")]
 layout_mode = 2
-
-[node name="music volume slider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_vt5us")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 bus_name = "Music"
-
-[node name="music volume button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-icon = ExtResource("3_wy3m1")
-flat = true
 
 [node name="sfx volume text" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,22 +82,16 @@ text = "
 SFX Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="sfx volume" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_fwci8")]
 layout_mode = 2
-
-[node name="sfx volume slider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_vt5us")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 bus_name = "SFX"
 
-[node name="sfx volume button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="voices volume text" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-icon = ExtResource("3_wy3m1")
-flat = true
+text = "
+Voice Volume"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/master volume button" to="." method="_on_master_volume_slider_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/music volume button" to="." method="_on_music_volume_slider_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer3/sfx volume button" to="." method="_on_sfx_volume_slider_pressed"]
+[node name="voices volume" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_fwci8")]
+layout_mode = 2
+bus_name = "Voices"

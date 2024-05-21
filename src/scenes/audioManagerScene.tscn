@@ -13,7 +13,21 @@ volume_db = -30.0
 autoplay = true
 bus = &"Music"
 
-[node name="sfx" type="AudioStreamPlayer" parent="."]
+[node name="ambientSFX" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 autoplay = true
 bus = &"SFX"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+autoplay = true
+bus = &"SFX"
+
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+volume_db = -30.0
+bus = &"Voices"
+
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
+[connection signal="finished" from="ambientSFX" to="." method="_on_ambient_sfx_finished"]
+[connection signal="finished" from="Voices" to="." method="_on_voices_finished"]

@@ -1,0 +1,159 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ded2uqjo5xb"]
+
+[ext_resource type="Texture2D" uid="uid://ctml8qef2232m" path="res://src/images/zona1.jpg" id="1_17tu5"]
+[ext_resource type="Script" path="res://src/scenes/map_selector.gd" id="1_ev4y1"]
+
+[node name="mapSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ev4y1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 376.0
+offset_bottom = 512.0
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_right = 188.0
+offset_bottom = 512.0
+grow_horizontal = 2
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -376.0
+offset_bottom = 512.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 1140.0
+offset_bottom = 637.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 102
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_17tu5")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Zone1" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Zone 1
+"
+
+[node name="Zone2" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Zone 2
+"
+
+[node name="Zone3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Zone 3"
+
+[node name="Zone4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Zone 4"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_17tu5")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 7
+
+[node name="Zone1" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Zone 1
+"
+
+[node name="Zone2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Zone 2
+"
+
+[node name="Zone3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Zone 3"
+
+[node name="Zone4" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Zone 4"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_17tu5")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 7
+
+[node name="Zone1" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Zone 1
+"
+
+[node name="Zone2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Zone 2
+"
+
+[node name="Zone3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Zone 3"
+
+[node name="Zone4" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Zone 4"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

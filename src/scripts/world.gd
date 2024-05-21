@@ -8,8 +8,7 @@ var last_y = 0
 var interface: XRInterface
 
 func _ready() -> void:
-	AudioManagerScene.play_music("res://src/sounds/music.mp3")
-	AudioManagerScene.play_sfx("res://src/sounds/ambiental 1.wav")
+	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
 	
 	if self.name == "worldVR":
 		interface = XRServer.find_interface("OpenXR")

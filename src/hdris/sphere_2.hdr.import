@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://4s6mf8l678jd"
 path.bptc="res://.godot/imported/sphere_2.hdr-3be15020a34ee49ec2da047e8201e890.bptc.ctex"
+path.astc="res://.godot/imported/sphere_2.hdr-3be15020a34ee49ec2da047e8201e890.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/hdris/sphere_2.hdr"
-dest_files=["res://.godot/imported/sphere_2.hdr-3be15020a34ee49ec2da047e8201e890.bptc.ctex"]
+dest_files=["res://.godot/imported/sphere_2.hdr-3be15020a34ee49ec2da047e8201e890.bptc.ctex", "res://.godot/imported/sphere_2.hdr-3be15020a34ee49ec2da047e8201e890.astc.ctex"]
 
 [params]
 

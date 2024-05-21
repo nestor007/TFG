@@ -90,6 +90,7 @@ volumetric_fog_sky_affect = 0.081
 script = ExtResource("1_hj0kw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.97936, 0, 0, 0, 4.97936, 0, 0, 0, 4.97936, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
 [node name="infoButton" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]
@@ -97,10 +98,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
 label = NodePath("Label3D")
 
 [node name="Label3D" type="Label3D" parent="infoButton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11885, -0.0370753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757968, -1.25263)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "sos un boludo raul"
+text = "Prueba de text to speech 1"
 font_size = 12
 
 [node name="infoButton2" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]
@@ -108,10 +109,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
 label = NodePath("Label3D2")
 
 [node name="Label3D2" type="Label3D" parent="infoButton2"]
-transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -0.0398523, 0.0525687, -0.00802077)
+transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -1.58003, 0.721266, -0.00802077)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "Guren best borracha"
+text = "zona bosque primera"
 font_size = 12
 
 [node name="infoButton3" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]
@@ -119,11 +120,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
 label = NodePath("Label3D3")
 
 [node name="Label3D3" type="Label3D" parent="infoButton3"]
-transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 0.00907996, 0.0646458, 0.00263986)
+transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 1.4854, 0.907684, 0.00263986)
 visible = false
 modulate = Color(1, 0.380392, 1, 1)
-text = "prendan fuego
-a la RENFE"
+text = "probando textos largos con puntos.
+Además de comas, punto y coma; junto con el punto doble:
+"
 font_size = 12
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

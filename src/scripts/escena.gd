@@ -12,8 +12,8 @@ func _process(_delta):
 func textToSpeech():
 	if Input.is_action_just_pressed("Read"):
 		if $infoButton/Label3D.visible:
-			AudioManagerScene.play_sfx("res://src/sounds/label3d1.mp3")
+			AudioManagerScene.play_voices("res://src/sounds/label3d1.mp3")
 		elif $infoButton2/Label3D2.visible:
-			AudioManagerScene.play_sfx("res://src/sounds/label3d2.mp3")
+			AudioManagerScene.play_voices("res://src/sounds/label3d2.mp3")
 		elif $infoButton3/Label3D3.visible:
-			AudioManagerScene.play_sfx("res://src/sounds/label3d3.mp3")
+			AudioManagerScene.play_voices("res://src/sounds/label3d3.mp3")

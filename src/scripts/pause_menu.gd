@@ -4,12 +4,10 @@ extends Control
 func _ready():
 	$AnimationPlayer.play("RESET")
 func resume():
-	print("resume")
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	
 func pause():
-	print("pause")
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 func testEsc() -> void:
@@ -26,7 +24,7 @@ func _on_resume_pressed():
 
 
 func _on_menu_pressed():
-	AudioManagerScene.play_sfx("")
+	AudioManagerScene.play_ambient_sfx("")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/scenes/menu.tscn")
 

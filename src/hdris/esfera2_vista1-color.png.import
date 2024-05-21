@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b58o4k6yt73t7"
 path.s3tc="res://.godot/imported/esfera2_vista1-color.png-fb8e306c29e385f9606c8e7ecbf0a76b.s3tc.ctex"
+path.etc2="res://.godot/imported/esfera2_vista1-color.png-fb8e306c29e385f9606c8e7ecbf0a76b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://src/hdris/esfera2_vista1-color.png"
-dest_files=["res://.godot/imported/esfera2_vista1-color.png-fb8e306c29e385f9606c8e7ecbf0a76b.s3tc.ctex"]
+dest_files=["res://.godot/imported/esfera2_vista1-color.png-fb8e306c29e385f9606c8e7ecbf0a76b.s3tc.ctex", "res://.godot/imported/esfera2_vista1-color.png-fb8e306c29e385f9606c8e7ecbf0a76b.etc2.ctex"]
 
 [params]
 
