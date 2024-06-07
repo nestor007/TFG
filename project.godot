@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 AudioManagerScene="*res://src/scenes/audioManagerScene.tscn"
 
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
+
 [input]
 
 move_camera_up={

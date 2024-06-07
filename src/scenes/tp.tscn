@@ -9,6 +9,7 @@
 script = ExtResource("1_ylsed")
 
 [node name="tpRing" parent="." instance=ExtResource("2_klqe4")]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tpRing"]
 
