@@ -5,7 +5,7 @@ func _ready():
 
 func _on_play_pressed():
 	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
-	get_tree().change_scene_to_file("res://src/scenes/world.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/worldVR.tscn")
 
 func _on_select_map_pressed():
 	$VBoxContainer.visible = false

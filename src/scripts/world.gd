@@ -8,11 +8,11 @@ var last_y = 0
 var interface: XRInterface
 
 func _ready() -> void:
-	if self.name == "worldVR":
-		interface = XRServer.find_interface("OpenXR")
-		if interface and interface.is_initialized():
-			print("va")
-			get_viewport().use_xr = true
+	print("estoy en el world vr")
+	interface = XRServer.find_interface("OpenXR")
+	if interface and interface.is_initialized():
+		print("va")
+		get_viewport().use_xr = true
 			
 			
 func _process(delta):

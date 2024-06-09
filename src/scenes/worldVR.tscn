@@ -16,5 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393677, 0)
 light_energy = 0.319
 
 [node name="Player" parent="." instance=ExtResource("3_r3fbl")]
+transform = Transform3D(0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0)
 
 [connection signal="site_interacted" from="EscenaBosque" to="." method="_on_change_Scene_interacted"]
