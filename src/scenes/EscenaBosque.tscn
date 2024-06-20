@@ -11,12 +11,13 @@ albedo_texture = ExtResource("2_qushl")
 [sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
 material = SubResource("StandardMaterial3D_ldokd")
 flip_faces = true
+radial_segments = 32
+rings = 16
 
 [node name="EscenaBosque" type="Node3D"]
 script = ExtResource("1_hj0kw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.8035, 0, 0, 0, 1.8035, 0, 0, 0, 1.8035, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
 [node name="infoButton" parent="." node_paths=PackedStringArray("label") instance=ExtResource("3_3kwwv")]

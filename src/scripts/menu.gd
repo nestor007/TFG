@@ -5,25 +5,23 @@ func _ready():
 
 func _on_play_pressed():
 	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
-	get_tree().change_scene_to_file("res://src/scenes/worldVR.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/world.tscn")
 
 func _on_select_map_pressed():
-	$VBoxContainer.visible = false
-	$MarginContainer3.visible = true
+	$principalMenu.visible = false
+	$mapSelectorMenu.visible = true
 	
 func _on_options_pressed():
-	$VBoxContainer.visible = false
-	$Panel.visible = true
+	$principalMenu.visible = false
+	$optionsMenu.visible = true
 	
 
 func _on_back_pressed():
-	$VBoxContainer.visible = true
-	$Panel.visible = false
+	$principalMenu.visible = true
+	$mapSelectorMenu.visible = false
+	$optionsMenu.visible = false
 	
 
-func _on_backMap_pressed():
-	$VBoxContainer.visible = true
-	$MarginContainer3.visible = false
 	
 func _on_quit_pressed():
 	get_tree().quit()

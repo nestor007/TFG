@@ -3,18 +3,20 @@ extends Node3D
 
 @onready var camera = get_node("Camera3D")
 
+var scenePath: String = "res://src/scenes/EscenaCampo.tscn"
 var last_x = 0
 var last_y = 0
 var interface: XRInterface
 
+
 func _ready() -> void:
-	print("estoy en el world vr")
 	interface = XRServer.find_interface("OpenXR")
 	if interface and interface.is_initialized():
 		print("va")
 		get_viewport().use_xr = true
-			
-			
+		
+
+	select_scene(scenePath)
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)
@@ -62,7 +64,6 @@ func update2(x,y,delta):
 
 func _on_change_Scene_interacted(scene: String):
 	for child in get_children():
-		print(child)
 		if child is Escena:
 			remove_child(child)
 	var newChild = load(scene).instantiate()
@@ -71,7 +72,6 @@ func _on_change_Scene_interacted(scene: String):
 
 func select_scene(scene: String):
 	for child in get_children():
-		print(child)
 		if child is Escena:
 			remove_child(child)
 	var newChild = load(scene).instantiate()

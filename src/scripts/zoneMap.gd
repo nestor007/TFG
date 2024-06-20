@@ -18,9 +18,11 @@ func _ready():
 
 func _on_zone_1_pressed():
 	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
-	get_tree().change_scene_to_file("res://src/scenes/world.tscn")
-	#call_deferred("sendZoneToWorld", zone1)
-
+	var world: Node = preload("res://src/scenes/world.tscn").instantiate()
+	world.scenePath = zone4
+	for hijo in world.get_children():
+		print(hijo.name)
+	print("---------------------------------------------------------------------\n")
 
 func _on_zone_2_pressed():
 	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
