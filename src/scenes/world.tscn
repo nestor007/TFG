@@ -16,5 +16,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393677, 0)
 light_energy = 0.319
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_i74jv")]
-
-[connection signal="site_interacted" from="EscenaBosque" to="." method="_on_change_Scene_interacted"]

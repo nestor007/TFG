@@ -2,8 +2,6 @@ extends Node3D
 
 
 @onready var camera = get_node("Camera3D")
-
-var scenePath: String = "res://src/scenes/EscenaCampo.tscn"
 var last_x = 0
 var last_y = 0
 var interface: XRInterface
@@ -15,8 +13,8 @@ func _ready() -> void:
 		print("va")
 		get_viewport().use_xr = true
 		
-
-	select_scene(scenePath)
+	if SceneManager.scenePath != "":
+		select_scene(SceneManager.scenePath)
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)

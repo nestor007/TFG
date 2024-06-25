@@ -96,7 +96,7 @@ theme_override_constants/separation = 45
 layout_mode = 2
 size_flags_vertical = 1
 imageZone = ExtResource("1_17tu5")
-zone1 = "res://src/scenes/EscenaBosque.tscn"
+zone1 = "res://src/scenes/EscenaPlaya.tscn"
 zone2 = "res://src/scenes/EscenaCampo.tscn"
 zone3 = "res://src/scenes/EscenaCielo.tscn"
 zone4 = "res://src/scenes/EscenaPlaya.tscn"
@@ -104,7 +104,9 @@ zone4 = "res://src/scenes/EscenaPlaya.tscn"
 [node name="zoneMap2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
 imageZone = ExtResource("4_xsams")
+zone1 = "res://src/scenes/EscenaCielo.tscn"
 
 [node name="zoneMap3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
 imageZone = ExtResource("5_6mlg3")
+zone1 = "res://src/scenes/EscenaPlaya.tscn"
