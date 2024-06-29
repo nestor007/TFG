@@ -105,8 +105,14 @@ zone4 = "res://src/scenes/EscenaPlaya.tscn"
 layout_mode = 2
 imageZone = ExtResource("4_xsams")
 zone1 = "res://src/scenes/EscenaCielo.tscn"
+zone2 = "res://src/scenes/EscenaBosque.tscn"
+zone3 = "res://src/scenes/EscenaCampo.tscn"
+zone4 = "res://src/scenes/EscenaCielo.tscn"
 
 [node name="zoneMap3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
 imageZone = ExtResource("5_6mlg3")
 zone1 = "res://src/scenes/EscenaPlaya.tscn"
+zone2 = "res://src/scenes/EscenaCielo.tscn"
+zone3 = "res://src/scenes/EscenaCampo.tscn"
+zone4 = "res://src/scenes/EscenaBosque.tscn"

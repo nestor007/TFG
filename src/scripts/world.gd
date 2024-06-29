@@ -6,6 +6,15 @@ var last_x = 0
 var last_y = 0
 var interface: XRInterface
 
+func _ready() -> void:
+	interface = XRServer.find_interface("OpenXR")
+	if interface and interface.is_initialized():
+		print("va")
+		get_viewport().use_xr = true
+		
+	if SceneManager.scenePath != "":
+		select_scene(SceneManager.scenePath)
+
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)
