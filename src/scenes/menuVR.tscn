@@ -9,6 +9,7 @@ viewport_path = NodePath("Sprite3D/SubViewport")
 [node name="Node3D" type="Node3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.33429)
 texture = SubResource("ViewportTexture_pwmuk")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
@@ -17,4 +18,3 @@ size = Vector2i(730, 512)
 [node name="Menu" parent="Sprite3D/SubViewport" instance=ExtResource("1_b22mv")]
 
 [node name="Player" parent="." instance=ExtResource("2_dda8l")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 2.15825)
