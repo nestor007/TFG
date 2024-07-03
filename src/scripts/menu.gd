@@ -4,7 +4,8 @@ func _ready():
 	AudioManagerScene.play_music("res://src/sounds/music.mp3")
 
 func _on_play_pressed():
-	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental 1.wav")
+	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental.mp3")
+	SceneManager.scenePath = "res://src/scenes/zonasScene/zone1Part1.tscn"
 	get_tree().change_scene_to_file("res://src/scenes/world.tscn")
 
 func _on_select_map_pressed():

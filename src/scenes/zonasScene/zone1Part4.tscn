@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://8eykaulc5fvk"]
+
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_iab2t"]
+[ext_resource type="Texture2D" uid="uid://cusb6w0uvbh6" path="res://src/hdris/imgz1p4.png" id="2_wwmd4"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_xk5qf"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="4_qdss0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pomsp"]
+albedo_texture = ExtResource("2_wwmd4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
+material = SubResource("StandardMaterial3D_pomsp")
+flip_faces = true
+radial_segments = 32
+rings = 16
+
+[node name="zone1Part2" type="Node3D"]
+transform = Transform3D(-0.364308, 0, 0.931279, 0, 1, 0, -0.931279, 0, -0.364308, 0, 0, 0)
+script = ExtResource("1_iab2t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.41521, 0, -6.48258e-07, 0, 7.41521, 0, 6.48258e-07, 0, -7.41521, 0, 0, 0)
+mesh = SubResource("SphereMesh_7ywa3")
+
+[node name="infoButton" parent="." instance=ExtResource("3_xk5qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
+
+[node name="Label3D" type="Label3D" parent="infoButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757968, -1.25263)
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "Prueba de text to speech 1"
+font_size = 12
+
+[node name="infoButton2" parent="." instance=ExtResource("3_xk5qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
+
+[node name="Label3D2" type="Label3D" parent="infoButton2"]
+transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -1.58003, 0.721266, -0.00802077)
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "zona bosque primera"
+font_size = 12
+
+[node name="infoButton3" parent="." instance=ExtResource("3_xk5qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
+
+[node name="Label3D3" type="Label3D" parent="infoButton3"]
+transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 1.4854, 0.907684, 0.00263986)
+visible = false
+modulate = Color(1, 0.380392, 1, 1)
+text = "probando textos largos con puntos.
+Además de comas, punto y coma; junto con el punto doble:
+"
+font_size = 12
+
+[node name="tp" parent="." instance=ExtResource("4_qdss0")]
+transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, 3.20075, -0.625788, 1.38981)
+scene = "res://src/scenes/zonasScene/zone1Part5.tscn"
+
+[node name="tp2" parent="." instance=ExtResource("4_qdss0")]
+transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, -3.25444, -0.625787, -1.04963)
+scene = "res://src/scenes/zonasScene/zone1Part3.tscn"
+
+[connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
+[connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]

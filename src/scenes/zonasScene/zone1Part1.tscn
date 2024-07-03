@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0hpdfsjee2d3"]
+
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_hj0kw"]
+[ext_resource type="Texture2D" uid="uid://bgeifwhh07ccy" path="res://src/hdris/imgz1p1.png" id="2_t6bcp"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_3kwwv"]
+[ext_resource type="Texture2D" uid="uid://dphbsjql3ct41" path="res://src/images/texts/texto1.png" id="3_xgmgh"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_p7ab3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
+albedo_texture = ExtResource("2_t6bcp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
+material = SubResource("StandardMaterial3D_14dkn")
+flip_faces = true
+radial_segments = 32
+rings = 16
+
+[node name="zone1Part1" type="Node3D"]
+transform = Transform3D(-0.920525, 0, 0.390683, 0, 1, 0, -0.390683, 0, -0.920525, 0, 0, 0)
+script = ExtResource("1_hj0kw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.41521, 0, 0, 0, 7.41521, 0, 0, 0, 7.41521, 0, 0, 0)
+mesh = SubResource("SphereMesh_7ywa3")
+
+[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_3kwwv")]
+transform = Transform3D(3.38047, 0, 0, 0, 3.38047, 0, 0, 0, 3.38047, -1.20312, -0.292151, 3.02203)
+sprite = NodePath("Sprite3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="infoButton"]
+transform = Transform3D(-0.0352508, 0, -3.08172e-09, 0, 0.0352508, 0, 3.08172e-09, 0, -0.0352508, 0.150412, 0.0358255, -0.54478)
+visible = false
+billboard = 2
+texture = ExtResource("3_xgmgh")
+
+[node name="infoButton2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_3kwwv")]
+transform = Transform3D(2.22828, 0, 0, 0, 2.22828, 0, 0, 0, 2.22828, -2.44654, 0, 0)
+sprite = NodePath("Sprite3D2")
+
+[node name="Sprite3D2" type="Sprite3D" parent="infoButton2"]
+transform = Transform3D(-0.053478, 0, -4.6752e-09, 0, 0.053478, 0, 4.6752e-09, 0, -0.053478, 0.786203, -0.0767606, 0.028153)
+visible = false
+billboard = 2
+texture = ExtResource("3_xgmgh")
+
+[node name="infoButton3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_3kwwv")]
+transform = Transform3D(2.60221, 0, 0, 0, 2.60221, 0, 0, 0, 2.60221, 3.5216, 0, 0)
+sprite = NodePath("Sprite3D3")
+
+[node name="Sprite3D3" type="Sprite3D" parent="infoButton3"]
+transform = Transform3D(-0.0457935, 0, -4.0034e-09, 0, 0.0457935, 0, 4.0034e-09, 0, -0.0457935, -0.917401, -0.0657304, 0.0732405)
+visible = false
+billboard = 2
+texture = ExtResource("3_xgmgh")
+
+[node name="tp" parent="." instance=ExtResource("5_p7ab3")]
+transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, 1.21435, -0.826458, 2.91423)
+scene = "res://src/scenes/zonasScene/zone1Part2.tscn"
+
+[connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]

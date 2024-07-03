@@ -1,96 +1,93 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch7spak3eu2ts"]
+[gd_scene load_steps=7 format=3 uid="uid://ch7spak3eu2ts"]
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_xnrg0"]
-[ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/EscenaBosque.tscn" id="2_hoc5n"]
-[ext_resource type="Shader" path="res://src/shaders/prueba.gdshader" id="4_u11gf"]
+[ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hoc5n"]
 [ext_resource type="PackedScene" uid="uid://tjahyrcrp4hk" path="res://src/scenes/pause_menu.tscn" id="5_i74jv"]
 
-[sub_resource type="Gradient" id="Gradient_nnxwc"]
-offsets = PackedFloat32Array(0.48, 0.6)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Animation" id="Animation_lypdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_janux"]
-gradient = SubResource("Gradient_nnxwc")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="Animation" id="Animation_2ypef"]
+resource_name = "fundidoNegro"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 2.6),
+"transitions": PackedFloat32Array(1, 0.3, 0.3),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
 
-[sub_resource type="Curve" id="Curve_my5d3"]
-_data = [Vector2(0.00258398, 0), 0.0, 0.0, 0, 0, Vector2(0.671835, 0.445455), -0.413903, -0.413903, 0, 0, Vector2(1, 0.990909), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_pwomg"]
-texture_mode = 1
-curve = SubResource("Curve_my5d3")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f6r7i"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cgnc1"]
-seamless = true
-noise = SubResource("FastNoiseLite_f6r7i")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ly0hk"]
-fractal_octaves = 10
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ai1n1"]
-seamless = true
-noise = SubResource("FastNoiseLite_ly0hk")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3f2m4"]
-noise_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ro5p"]
-seamless = true
-noise = SubResource("FastNoiseLite_3f2m4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqf6s"]
-shader = ExtResource("4_u11gf")
-shader_parameter/clouds_samples = 32
-shader_parameter/shadow_sample = 4
-shader_parameter/velocity = 0.005
-shader_parameter/clouds_density = 0.4
-shader_parameter/clouds_scale = 1.0
-shader_parameter/clouds_smoothness = 0.03
-shader_parameter/clouds_light_color = Color(0.266667, 0.266667, 0.266667, 1)
-shader_parameter/clouds_shadow_intensity = 3.5
-shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_ai1n1")
-shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_cgnc1")
-shader_parameter/cloud_curves = SubResource("CurveTexture_pwomg")
-shader_parameter/high_clouds_density = 0.2
-shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_7ro5p")
-shader_parameter/top_color = Color(0.34902, 0.588235, 1, 1)
-shader_parameter/bottom_color = Color(0, 0.329412, 0.968627, 1)
-shader_parameter/sun_scatter = Color(0.298039, 0.298039, 0.298039, 1)
-shader_parameter/astro_tint = Color(0.905882, 0.788235, 0.627451, 1)
-shader_parameter/astro_scale = 9.0
-shader_parameter/astro_intensity = 3.0
-shader_parameter/astro_sampler = SubResource("GradientTexture2D_janux")
-shader_parameter/stars_intensity = 0.0
-shader_parameter/shooting_stars_intensity = 0.0
-shader_parameter/shooting_star_tint = null
-
-[sub_resource type="Sky" id="Sky_njapg"]
-sky_material = SubResource("ShaderMaterial_kqf6s")
-
-[sub_resource type="Environment" id="Environment_pko38"]
-background_mode = 2
-background_energy_multiplier = 2.05
-sky = SubResource("Sky_njapg")
-ambient_light_source = 3
-volumetric_fog_enabled = true
-volumetric_fog_sky_affect = 0.081
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1aj5"]
+_data = {
+"RESET": SubResource("Animation_lypdq"),
+"fundidoNegro": SubResource("Animation_2ypef")
+}
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_xnrg0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="EscenaBosque" parent="." instance=ExtResource("2_hoc5n")]
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393677, 0)
-light_energy = 0.319
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39368, 0)
+light_energy = 5.164
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_i74jv")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pko38")
+[node name="zone1Part1" parent="." instance=ExtResource("2_hoc5n")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1aj5")
+}

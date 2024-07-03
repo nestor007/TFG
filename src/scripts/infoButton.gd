@@ -1,10 +1,10 @@
 extends Node3D
 class_name Info
 
-@export var label:Label3D = null
+@export var sprite: Sprite3D = null
 
 func toggle_label():
-	label.visible = !label.visible
+	sprite.visible = !sprite.visible
 
 func _on_click_in_3DObject(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:

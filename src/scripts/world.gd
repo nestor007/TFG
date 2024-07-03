@@ -6,7 +6,9 @@ var last_x = 0
 var last_y = 0
 var interface: XRInterface
 
+
 func _ready() -> void:
+	$AnimationPlayer.play("RESET")
 	interface = XRServer.find_interface("OpenXR")
 	if interface and interface.is_initialized():
 		print("va")
@@ -18,6 +20,8 @@ func _ready() -> void:
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)
+
+
 
 func check_sensor(delta):
 	var acc = Input.get_accelerometer()
@@ -55,7 +59,7 @@ func update(x, y, delta):
 
 func update2(x, y, delta):
 	var forward = -camera.global_transform.basis.z.normalized()
-	var right = camera.global_transform.basis.x.normalized()
+	var right = -camera.global_transform.basis.x.normalized()
 
 	var forward_displacement = forward * y * delta
 	var right_displacement = right * x * delta
@@ -64,6 +68,8 @@ func update2(x, y, delta):
 
 
 func _on_change_Scene_interacted(scene: String):
+	$AnimationPlayer.play("fundidoNegro")
+	await get_tree().create_timer(1.3).timeout
 	for child in get_children():
 		if child is Escena:
 			remove_child(child)

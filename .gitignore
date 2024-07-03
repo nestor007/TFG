@@ -18,3 +18,7 @@ mono_crash.*.json
 android/build/assets/
 android/build/build/
 android/build/libs/
+
+
+# Archivos
+src/hdris/*.mp4

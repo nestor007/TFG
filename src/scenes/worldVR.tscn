@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmlu6bb5y5hfs"]
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
-[ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/EscenaBosque.tscn" id="2_hkaxf"]
+[ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
 [ext_resource type="PackedScene" uid="uid://udaqemua364r" path="res://src/scenes/player.tscn" id="3_r3fbl"]
 
 [node name="worldVR" type="Node3D"]
