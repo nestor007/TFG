@@ -1,8 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmlu6bb5y5hfs"]
+[gd_scene load_steps=7 format=3 uid="uid://bmlu6bb5y5hfs"]
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
 [ext_resource type="PackedScene" uid="uid://udaqemua364r" path="res://src/scenes/player.tscn" id="3_r3fbl"]
+
+[sub_resource type="Animation" id="Animation_lypdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2ypef"]
+resource_name = "fundidoNegro"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 2.6),
+"transitions": PackedFloat32Array(1, 0.3, 0.3),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1aj5"]
+_data = {
+"RESET": SubResource("Animation_lypdq"),
+"fundidoNegro": SubResource("Animation_2ypef")
+}
 
 [node name="worldVR" type="Node3D"]
 script = ExtResource("1_nyoc8")
@@ -17,5 +78,10 @@ light_energy = 0.319
 
 [node name="Player" parent="." instance=ExtResource("3_r3fbl")]
 transform = Transform3D(0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1aj5")
+}
 
 [connection signal="site_interacted" from="EscenaBosque" to="." method="_on_change_Scene_interacted"]
