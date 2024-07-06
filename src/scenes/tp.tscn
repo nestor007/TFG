@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1s6ks4ddkhk4"]
+[gd_scene load_steps=5 format=3 uid="uid://c1s6ks4ddkhk4"]
 
 [ext_resource type="Script" path="res://src/scripts/tp.gd" id="1_ylsed"]
 [ext_resource type="PackedScene" uid="uid://1836evwrtnh7" path="res://src/scenes/tp_ring.tscn" id="2_klqe4"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/interactable_body.gd" id="3_pjug6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a14vc"]
 
@@ -12,9 +13,12 @@ script = ExtResource("1_ylsed")
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tp_ring"]
+collision_layer = 1048577
+script = ExtResource("3_pjug6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tp_ring/StaticBody3D"]
 transform = Transform3D(0.0472555, 0, 0, 0, 0.0472555, 0, 0, 0, 0.0472555, 0, 0, 0)
 shape = SubResource("SphereShape3D_a14vc")
 
 [connection signal="input_event" from="tp_ring/StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="pointer_event" from="tp_ring/StaticBody3D" to="." method="_on_static_body_3d_pointer_event"]

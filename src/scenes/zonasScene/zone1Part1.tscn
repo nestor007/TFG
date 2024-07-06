@@ -23,7 +23,7 @@ transform = Transform3D(-0.920525, 0, 0.390683, 0, 1, 0, -0.390683, 0, -0.920525
 script = ExtResource("1_hj0kw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.41521, 0, 2.38419e-07, 0, 7.41521, 0, -2.38419e-07, 0, 7.41521, 0, -0.662076, 0)
+transform = Transform3D(7.41521, 0, 2.38419e-07, 0, 7.41521, 0, -2.38419e-07, 0, 7.41521, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
 [node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_3kwwv")]

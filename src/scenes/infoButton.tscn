@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://didkxmxjo0jkk"]
+[gd_scene load_steps=5 format=3 uid="uid://didkxmxjo0jkk"]
 
 [ext_resource type="Script" path="res://src/scripts/infoButton.gd" id="1_v0cxl"]
 [ext_resource type="PackedScene" uid="uid://bof7rc3qsc3lo" path="res://src/scenes/moneda.tscn" id="3_5xsvd"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/interactable_body.gd" id="3_xrb3x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qstq2"]
 
@@ -13,9 +14,11 @@ transform = Transform3D(0.0750309, 0.000130954, 0.997181, -0.00174533, 0.999998,
 
 [node name="moneda3D" type="StaticBody3D" parent="moneda_peque"]
 transform = Transform3D(1, 0, 0, 1.16415e-10, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 1048577
+script = ExtResource("3_xrb3x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="moneda_peque/moneda3D"]
 transform = Transform3D(-1.09139e-09, -0.025, 0, 0.025, -1.09503e-09, 0, 0, 0, 0.025, 0, 0, 0)
 shape = SubResource("SphereShape3D_qstq2")
 
-[connection signal="input_event" from="moneda_peque/moneda3D" to="." method="_on_click_in_3DObject"]
+[connection signal="pointer_event" from="moneda_peque/moneda3D" to="." method="_on_moneda_3d_pointer_event"]

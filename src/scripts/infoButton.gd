@@ -11,3 +11,11 @@ func _on_click_in_3DObject(_camera, event, _position, _normal, _shape_idx):
 		if event.pressed:
 			print("click")
 			toggle_label()
+
+
+func _on_moneda_3d_pointer_event(event : XRToolsPointerEvent):
+	var type := event.event_type
+	if type == XRToolsPointerEvent.Type.PRESSED:
+		print("click")
+		toggle_label()
+		

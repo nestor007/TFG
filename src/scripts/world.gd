@@ -9,16 +9,17 @@ var xr_interface: XRInterface
 
 
 func _ready() -> void:
-	#$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("RESET")
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
 		print("OpenXR initialized successfully")
-
+		
 		# Turn off v-sync!
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
+		$Player.position += Vector3(1.422,-0.693,0)
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 		

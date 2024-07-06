@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmlu6bb5y5hfs"]
+[gd_scene load_steps=13 format=3 uid="uid://bmlu6bb5y5hfs"]
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
 [ext_resource type="PackedScene" uid="uid://udaqemua364r" path="res://src/scenes/player.tscn" id="3_r3fbl"]
+[ext_resource type="Texture2D" uid="uid://bm1b3txaeuifm" path="res://src/images/Dorothy.png" id="4_4q0ng"]
 
 [sub_resource type="Animation" id="Animation_lypdq"]
 length = 0.001
@@ -59,29 +60,100 @@ tracks/1/keys = {
 "values": [false, true, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_3tui0"]
+resource_name = "fadeVR"
+length = 2.6
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1aj5"]
 _data = {
 "RESET": SubResource("Animation_lypdq"),
+"fadeVR": SubResource("Animation_3tui0"),
 "fundidoNegro": SubResource("Animation_2ypef")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xswg"]
+size = Vector3(8, 0.2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tl4bj"]
+size = Vector3(1.5, 1.5, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_neumd"]
+transparency = 1
+albedo_color = Color(0.00784314, 0, 0, 0.85098)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c6mis"]
+material = SubResource("StandardMaterial3D_neumd")
+size = Vector3(300, 0.3, 300)
 
 [node name="worldVR" type="Node3D"]
 script = ExtResource("1_nyoc8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="EscenaBosque" parent="." instance=ExtResource("2_hkaxf")]
+[node name="zone1Part1" parent="." instance=ExtResource("2_hkaxf")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393677, 0)
-light_energy = 0.319
-
-[node name="Player" parent="." instance=ExtResource("3_r3fbl")]
-transform = Transform3D(0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0, 0.0261189, 0, 0, 0)
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_j1aj5")
 }
 
-[connection signal="site_interacted" from="EscenaBosque" to="." method="_on_change_Scene_interacted"]
+[node name="Suelo" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.291525, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suelo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24084, 0)
+shape = SubResource("BoxShape3D_0xswg")
+
+[node name="THE ABYSS" type="Sprite3D" parent="."]
+transform = Transform3D(573.476, 0, 0, 0, -2.50675e-05, 573.476, 0, -573.476, -2.50675e-05, 0, -1775.25, 0)
+texture = ExtResource("4_4q0ng")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="THE ABYSS"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.4869e-14, 0, 2.4869e-14, 1, 0, -8.34004e-08, 1.90798)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="THE ABYSS/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 4.0224e-09, -0.0920212)
+shape = SubResource("BoxShape3D_tl4bj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="THE ABYSS"]
+transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.28666e-07, 2.94352)
+mesh = SubResource("BoxMesh_c6mis")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="THE ABYSS"]
+transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.218e-07, 2.78645)
+mesh = SubResource("BoxMesh_c6mis")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="THE ABYSS"]
+transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.14268e-07, 2.61415)
+mesh = SubResource("BoxMesh_c6mis")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="THE ABYSS"]
+transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.09562e-07, 2.50648)
+mesh = SubResource("BoxMesh_c6mis")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="THE ABYSS"]
+transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, -0.0033361, -0.00446144, 2.37091)
+mesh = SubResource("BoxMesh_c6mis")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39368, 0)
+light_energy = 5.164
+
+[node name="Player" parent="." instance=ExtResource("3_r3fbl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+
+[connection signal="site_interacted" from="zone1Part1" to="." method="_on_change_Scene_interacted"]
