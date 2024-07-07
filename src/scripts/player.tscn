@@ -1,0 +1,147 @@
+[gd_scene load_steps=15 format=3 uid="uid://nu42r0tx7t44"]
+
+[ext_resource type="Script" path="res://src/scripts/xrInputs.gd" id="1_gn5uy"]
+[ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="2_ndcug"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_ejl45"]
+[ext_resource type="Material" uid="uid://b8e1yeb8vq2g4" path="res://addons/godot-xr-tools/materials/pointer.tres" id="4_2qscp"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_kjnw6"]
+[ext_resource type="PackedScene" uid="uid://bap0hu2bh7rum" path="res://src/scenes/menu.tscn" id="6_fcnhq"]
+[ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="7_746c2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2fbp"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+albedo_texture_force_srgb = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_hqo40"]
+material = SubResource("StandardMaterial3D_h2fbp")
+flip_faces = true
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy6pc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.470588)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22sum"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.470588)
+
+[sub_resource type="Animation" id="Animation_1yeku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XRCamera3D/MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XRCamera3D/MeshInstance3D:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s7ja6"]
+resource_name = "fadeInOutVR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XRCamera3D/MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XRCamera3D/MeshInstance3D:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(0.2, 1, 1, 8),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_021bc"]
+_data = {
+"RESET": SubResource("Animation_1yeku"),
+"fadeInOutVR": SubResource("Animation_s7ja6")
+}
+
+[node name="player" type="XROrigin3D"]
+current = true
+script = ExtResource("1_gn5uy")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRCamera3D"]
+visible = false
+mesh = SubResource("SphereMesh_hqo40")
+
+[node name="XRController3D L" type="XRController3D" parent="."]
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="LeftPhysicsHand" parent="XRController3D L" instance=ExtResource("2_ndcug")]
+
+[node name="FunctionPointer" parent="XRController3D L" instance=ExtResource("3_ejl45")]
+laser_length = 1
+laser_material = SubResource("StandardMaterial3D_vy6pc")
+show_target = true
+target_radius = 0.0
+target_material = ExtResource("4_2qscp")
+
+[node name="menu" parent="XRController3D L" instance=ExtResource("5_kjnw6")]
+unique_name_in_owner = true
+transform = Transform3D(0.0153086, -0.299609, 0, 0.299609, 0.0153086, 0, 0, 0, 0.3, -0.294579, 0.0266972, 0.0947177)
+visible = false
+collision_layer = 1
+scene = ExtResource("6_fcnhq")
+viewport_size = Vector2(1280, 720)
+input_gamepad = true
+scene_properties_keys = PackedStringArray("menu.gd")
+
+[node name="XRController3D R" type="XRController3D" parent="."]
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightPhysicsHand" parent="XRController3D R" instance=ExtResource("7_746c2")]
+
+[node name="FunctionPointer" parent="XRController3D R" instance=ExtResource("3_ejl45")]
+laser_length = 1
+laser_material = SubResource("StandardMaterial3D_22sum")
+show_target = true
+target_material = ExtResource("4_2qscp")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0233727, 2.1542, -5.60576)
+text = "hola"
+font_size = 200
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_021bc")
+}
+
+[connection signal="button_pressed" from="XRController3D L" to="." method="_on_xr_controller_3d_l_button_pressed"]
+[connection signal="button_pressed" from="XRController3D R" to="." method="_on_xr_controller_3d_l_button_pressed"]

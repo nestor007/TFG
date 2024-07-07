@@ -15,7 +15,9 @@ func testEsc() -> void:
 		pause()
 	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:
 		resume()
-
+	
+	
+	
 func _process(_delta):
 	testEsc()
 

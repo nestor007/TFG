@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch7spak3eu2ts"]
+[gd_scene load_steps=7 format=3 uid="uid://ch7spak3eu2ts"]
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_xnrg0"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hoc5n"]
-[ext_resource type="PackedScene" uid="uid://bsuuhv7bj0x5u" path="res://src/scenes/player2.tscn" id="4_4x23k"]
 [ext_resource type="PackedScene" uid="uid://tjahyrcrp4hk" path="res://src/scenes/pause_menu.tscn" id="5_i74jv"]
 
 [sub_resource type="Animation" id="Animation_lypdq"]
@@ -90,5 +89,3 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_j1aj5")
 }
-
-[node name="XROrigin3D" parent="." instance=ExtResource("4_4x23k")]

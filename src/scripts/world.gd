@@ -9,6 +9,7 @@ var xr_interface: XRInterface
 
 
 func _ready() -> void:
+	AudioManagerScene.play_ambient_sfx("res://src/sounds/ambiental.mp3")
 	$AnimationPlayer.play("RESET")
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
-		$Player.position += Vector3(1.422,-0.693,0)
+		$player.position += Vector3(1.35,-0.67,0)
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 		
@@ -29,8 +30,6 @@ func _ready() -> void:
 func _process(delta):
 	keyboard_controls(delta)
 	#check_sensor(delta)
-
-
 
 func check_sensor(delta):
 	var acc = Input.get_accelerometer()
@@ -77,8 +76,9 @@ func update2(x, y, delta):
 
 
 func _on_change_Scene_interacted(scene: String):
-	$AnimationPlayer.play("fundidoNegro")
-	await get_tree().create_timer(1.3).timeout
+	#$AnimationPlayer.play("fundidoNegro")
+	$player.execute_fade_animation()
+	await get_tree().create_timer(0.5).timeout
 	for child in get_children():
 		if child is Escena:
 			remove_child(child)

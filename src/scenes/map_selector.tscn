@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://1ded2uqjo5xb"]
+[gd_scene load_steps=6 format=3 uid="uid://1ded2uqjo5xb"]
 
-[ext_resource type="Texture2D" uid="uid://ctml8qef2232m" path="res://src/images/zona1.jpg" id="1_17tu5"]
 [ext_resource type="Script" path="res://src/scripts/map_selector.gd" id="1_ev4y1"]
 [ext_resource type="PackedScene" uid="uid://xkp68736u68b" path="res://src/scenes/zoneMap.tscn" id="2_ou6hr"]
-[ext_resource type="Texture2D" uid="uid://xmj5x80q3nu3" path="res://src/images/zona2.png" id="4_xsams"]
-[ext_resource type="Texture2D" uid="uid://rs8o26gib5tq" path="res://src/images/zona3.png" id="5_6mlg3"]
+[ext_resource type="Texture2D" uid="uid://c343nr6s70c2c" path="res://src/images/zone1.jpg" id="3_0vxtw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ydnh"]
 blend_mode = 3
@@ -95,24 +93,35 @@ theme_override_constants/separation = 45
 [node name="zoneMap" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
 size_flags_vertical = 1
-imageZone = ExtResource("1_17tu5")
-zone1 = "res://src/scenes/zonasScene/zone1Part3.tscn"
-zone2 = "res://src/scenes/EscenaCampo.tscn"
-zone3 = "res://src/scenes/EscenaCielo.tscn"
-zone4 = "res://src/scenes/EscenaPlaya.tscn"
+imageZone = ExtResource("3_0vxtw")
+zone1 = "res://src/scenes/zonasScene/zone1Part1.tscn"
+zone2 = "res://src/scenes/zonasScene/zone1Part2.tscn"
+zone3 = "res://src/scenes/zonasScene/zone1Part3.tscn"
+zone4 = "res://src/scenes/zonasScene/zone1Part4.tscn"
+zone5 = "res://src/scenes/zonasScene/zone1Part5.tscn"
+zone6 = "res://src/scenes/zonasScene/zone1Part6.tscn"
+zone7 = "res://src/scenes/zonasScene/zone1Part7.tscn"
 
 [node name="zoneMap2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
-imageZone = ExtResource("4_xsams")
-zone1 = "res://src/scenes/EscenaCielo.tscn"
-zone2 = "res://src/scenes/zonasScene/zone1Part1.tscn"
-zone3 = "res://src/scenes/EscenaCampo.tscn"
-zone4 = "res://src/scenes/EscenaCielo.tscn"
+size_flags_vertical = 1
+imageZone = ExtResource("3_0vxtw")
+zone1 = "res://src/scenes/zonasScene/zone1Part1.tscn"
+zone2 = "res://src/scenes/zonasScene/zone1Part2.tscn"
+zone3 = "res://src/scenes/zonasScene/zone1Part3.tscn"
+zone4 = "res://src/scenes/zonasScene/zone1Part4.tscn"
+zone5 = "res://src/scenes/zonasScene/zone1Part5.tscn"
+zone6 = "res://src/scenes/zonasScene/zone1Part6.tscn"
+zone7 = "res://src/scenes/zonasScene/zone1Part7.tscn"
 
 [node name="zoneMap3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ou6hr")]
 layout_mode = 2
-imageZone = ExtResource("5_6mlg3")
-zone1 = "res://src/scenes/EscenaPlaya.tscn"
-zone2 = "res://src/scenes/EscenaCielo.tscn"
-zone3 = "res://src/scenes/EscenaCampo.tscn"
-zone4 = "res://src/scenes/zonasScene/zone1Part1.tscn"
+size_flags_vertical = 1
+imageZone = ExtResource("3_0vxtw")
+zone1 = "res://src/scenes/zonasScene/zone1Part1.tscn"
+zone2 = "res://src/scenes/zonasScene/zone1Part2.tscn"
+zone3 = "res://src/scenes/zonasScene/zone1Part3.tscn"
+zone4 = "res://src/scenes/zonasScene/zone1Part4.tscn"
+zone5 = "res://src/scenes/zonasScene/zone1Part5.tscn"
+zone6 = "res://src/scenes/zonasScene/zone1Part6.tscn"
+zone7 = "res://src/scenes/zonasScene/zone1Part7.tscn"

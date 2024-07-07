@@ -38,7 +38,22 @@ text = "Zone 3"
 layout_mode = 2
 text = "Zone 4"
 
+[node name="Zone5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zone 5"
+
+[node name="Zone6" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zone 6"
+
+[node name="Zone7" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zone 7"
+
 [connection signal="pressed" from="VBoxContainer/Zone1" to="." method="_on_zone_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Zone2" to="." method="_on_zone_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Zone3" to="." method="_on_zone_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/Zone4" to="." method="_on_zone_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/Zone5" to="." method="_on_zone_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/Zone6" to="." method="_on_zone_6_pressed"]
+[connection signal="pressed" from="VBoxContainer/Zone7" to="." method="_on_zone_7_pressed"]

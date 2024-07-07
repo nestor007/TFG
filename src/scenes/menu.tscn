@@ -38,10 +38,6 @@ layout_mode = 2
 texture = ExtResource("2_ju138")
 expand_mode = 5
 
-[node name="Play" type="Button" parent="principalMenu"]
-layout_mode = 2
-text = "Play"
-
 [node name="MapSelector" type="Button" parent="principalMenu"]
 layout_mode = 2
 text = "Map Selector"
@@ -118,7 +114,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Back"
 
-[connection signal="pressed" from="principalMenu/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="principalMenu/MapSelector" to="." method="_on_select_map_pressed"]
 [connection signal="pressed" from="principalMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="principalMenu/Quit" to="." method="_on_quit_pressed"]

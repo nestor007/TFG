@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
-[ext_resource type="PackedScene" uid="uid://udaqemua364r" path="res://src/scenes/player.tscn" id="3_r3fbl"]
 [ext_resource type="Texture2D" uid="uid://bm1b3txaeuifm" path="res://src/images/Dorothy.png" id="4_4q0ng"]
+[ext_resource type="PackedScene" uid="uid://nu42r0tx7t44" path="res://src/scripts/player.tscn" id="4_w7dlm"]
 
 [sub_resource type="Animation" id="Animation_lypdq"]
 length = 0.001
@@ -31,6 +31,10 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+
+[sub_resource type="Animation" id="Animation_3tui0"]
+resource_name = "fadeVR"
+length = 2.6
 
 [sub_resource type="Animation" id="Animation_2ypef"]
 resource_name = "fundidoNegro"
@@ -60,19 +64,12 @@ tracks/1/keys = {
 "values": [false, true, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_3tui0"]
-resource_name = "fadeVR"
-length = 2.6
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1aj5"]
 _data = {
 "RESET": SubResource("Animation_lypdq"),
 "fadeVR": SubResource("Animation_3tui0"),
 "fundidoNegro": SubResource("Animation_2ypef")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xswg"]
-size = Vector3(8, 0.2, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tl4bj"]
 size = Vector3(1.5, 1.5, 0.3)
@@ -84,6 +81,9 @@ albedo_color = Color(0.00784314, 0, 0, 0.85098)
 [sub_resource type="BoxMesh" id="BoxMesh_c6mis"]
 material = SubResource("StandardMaterial3D_neumd")
 size = Vector3(300, 0.3, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf8hl"]
+size = Vector3(30, 1, 30)
 
 [node name="worldVR" type="Node3D"]
 script = ExtResource("1_nyoc8")
@@ -105,13 +105,6 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_j1aj5")
 }
-
-[node name="Suelo" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.291525, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Suelo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24084, 0)
-shape = SubResource("BoxShape3D_0xswg")
 
 [node name="THE ABYSS" type="Sprite3D" parent="."]
 transform = Transform3D(573.476, 0, 0, 0, -2.50675e-05, 573.476, 0, -573.476, -2.50675e-05, 0, -1775.25, 0)
@@ -150,10 +143,17 @@ mesh = SubResource("BoxMesh_c6mis")
 skeleton = NodePath("../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39368, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39368, 0)
 light_energy = 5.164
 
-[node name="Player" parent="." instance=ExtResource("3_r3fbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+[node name="player" parent="." instance=ExtResource("4_w7dlm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.16767, 0)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08462, 0)
+shape = SubResource("BoxShape3D_sf8hl")
 
 [connection signal="site_interacted" from="zone1Part1" to="." method="_on_change_Scene_interacted"]
