@@ -1,72 +1,54 @@
-[gd_scene load_steps=8 format=3 uid="uid://bb5hqk4xm5eht"]
+[gd_scene load_steps=8 format=3 uid="uid://caoq3x1x6jvj2"]
 
-[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_4ww6f"]
-[ext_resource type="Texture2D" uid="uid://bed2xq3lpde3b" path="res://src/hdris/imgz1p3.png" id="2_hejnu"]
-[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_pg31m"]
-[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="4_tjksy"]
-[ext_resource type="Texture2D" uid="uid://bm1b3txaeuifm" path="res://src/images/Dorothy.png" id="5_g3fto"]
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_g0qi3"]
+[ext_resource type="Texture2D" uid="uid://bed2xq3lpde3b" path="res://src/hdris/imgz1p3.png" id="2_ak63j"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_3fwd0"]
+[ext_resource type="Texture2D" uid="uid://d3a3lo6wknccx" path="res://src/images/texts/texto1.png" id="4_an4ww"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_rbnc8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iw3v"]
-albedo_texture = ExtResource("2_hejnu")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
+shading_mode = 0
+albedo_texture = ExtResource("2_ak63j")
+albedo_texture_force_srgb = true
+texture_filter = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
-material = SubResource("StandardMaterial3D_8iw3v")
+material = SubResource("StandardMaterial3D_14dkn")
 flip_faces = true
 radial_segments = 32
 rings = 16
 
-[node name="zone1Part2" type="Node3D"]
-transform = Transform3D(-0.898595, 0, -0.438779, 0, 1, 0, 0.438779, 0, -0.898595, 0, 0, 0)
-script = ExtResource("1_4ww6f")
+[node name="zone1Part3" type="Node3D"]
+transform = Transform3D(0.889608, 0, 0.456725, 0, 1, 0, -0.456725, 0, 0.889608, 0, 0, 0)
+script = ExtResource("1_g0qi3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-7.41521, 0, -6.48258e-07, 0, 7.41521, 0, 6.48258e-07, 0, -7.41521, 0, 0, 0)
+transform = Transform3D(42.3474, 0, 9.53674e-06, 0, 38.3143, 0, -9.53674e-06, 0, 42.3474, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
-[node name="infoButton" parent="." instance=ExtResource("3_pg31m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
+[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_3fwd0")]
+transform = Transform3D(64.4636, 0, 1.90735e-06, 0, 64.4635, 0, -1.90735e-06, 0, 64.4636, -5.93593, 1.35626, 14.7141)
+sprite = NodePath("Sprite3D")
 
-[node name="Label3D" type="Label3D" parent="infoButton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757968, -1.25263)
+[node name="Sprite3D" type="Sprite3D" parent="infoButton"]
+transform = Transform3D(-0.0149989, 0, -3.25963e-09, 0, 0.0149989, 0, 3.25963e-09, 0, -0.0149989, -0.0300409, 0.0053194, -0.213239)
 visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "Prueba de text to speech 1"
-font_size = 12
+billboard = 2
+texture = ExtResource("4_an4ww")
 
-[node name="infoButton2" parent="." instance=ExtResource("3_pg31m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
-
-[node name="Label3D2" type="Label3D" parent="infoButton2"]
-transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -1.58003, 0.721266, -0.00802077)
-visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "zona bosque primera"
-font_size = 12
-
-[node name="infoButton3" parent="." instance=ExtResource("3_pg31m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
-
-[node name="Label3D3" type="Label3D" parent="infoButton3"]
-transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 1.4854, 0.907684, 0.00263986)
-visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "probando textos largos con puntos.
-Además de comas, punto y coma; junto con el punto doble:
-"
-font_size = 12
-
-[node name="tp" parent="." instance=ExtResource("4_tjksy")]
-transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, 1.4539, -0.625788, -3.1206)
+[node name="tp" parent="." instance=ExtResource("5_rbnc8")]
+transform = Transform3D(31.8399, 0, 5.72205e-06, 0, 31.8399, 0, -5.72205e-06, 0, 31.8399, -7.14676, -0.826458, 15.7748)
 scene = "res://src/scenes/zonasScene/zone1Part2.tscn"
 
-[node name="tp2" parent="." instance=ExtResource("4_tjksy")]
-transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, -1.56099, -0.625788, 3.02977)
+[node name="tp2" parent="." instance=ExtResource("5_rbnc8")]
+transform = Transform3D(31.8399, 0, 2.86102e-06, 0, 31.8399, 0, -2.86102e-06, 0, 31.8399, 8.7091, -0.826458, -15.6821)
 scene = "res://src/scenes/zonasScene/zone1Part4.tscn"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.513558, 0, 0, 0, 0.0611455, 0.509905, 0, -0.509905, 0.0611455, 0, 3.233, 0)
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 14.7871, 0)
 billboard = 1
-texture = ExtResource("5_g3fto")
+text = "3"
+font_size = 2000
 
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
 [connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]

@@ -105,20 +105,22 @@ pose = &"aim"
 [node name="LeftPhysicsHand" parent="XRController3D L" instance=ExtResource("2_ndcug")]
 
 [node name="FunctionPointer" parent="XRController3D L" instance=ExtResource("3_ejl45")]
+distance = 30.0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_vy6pc")
 show_target = true
-target_radius = 0.0
+target_radius = 0.1
 target_material = ExtResource("4_2qscp")
 
 [node name="menu" parent="XRController3D L" instance=ExtResource("5_kjnw6")]
 unique_name_in_owner = true
-transform = Transform3D(0.0153086, -0.299609, 0, 0.299609, 0.0153086, 0, 0, 0, 0.3, -0.294579, 0.0266972, 0.0947177)
+transform = Transform3D(0.00764376, -0.149598, 0, 0.149598, 0.00764376, 0, 0, 0, 0.149794, -0.20884, -0.0344113, 0.087969)
 visible = false
-collision_layer = 1
 scene = ExtResource("6_fcnhq")
 viewport_size = Vector2(1280, 720)
 input_gamepad = true
+transparent = 0
+unshaded = true
 scene_properties_keys = PackedStringArray("menu.gd")
 
 [node name="XRController3D R" type="XRController3D" parent="."]
@@ -128,13 +130,16 @@ pose = &"aim"
 [node name="RightPhysicsHand" parent="XRController3D R" instance=ExtResource("7_746c2")]
 
 [node name="FunctionPointer" parent="XRController3D R" instance=ExtResource("3_ejl45")]
+distance = 30.0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_22sum")
 show_target = true
+target_radius = 0.1
 target_material = ExtResource("4_2qscp")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0233727, 2.1542, -5.60576)
+visible = false
 text = "hola"
 font_size = 200
 

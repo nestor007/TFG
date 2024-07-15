@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bap0hu2bh7rum"]
+[gd_scene load_steps=6 format=3 uid="uid://bap0hu2bh7rum"]
 
 [ext_resource type="Script" path="res://src/scripts/menu.gd" id="1_b5u5a"]
-[ext_resource type="Texture2D" uid="uid://biab7j6b4evfj" path="res://src/images/portada.png" id="2_ju138"]
+[ext_resource type="Texture2D" uid="uid://bnm5dgii5bfca" path="res://src/images/portada2.png" id="2_au313"]
 [ext_resource type="PackedScene" uid="uid://c412lnrufpner" path="res://src/scenes/options.tscn" id="2_w4bpy"]
+[ext_resource type="Theme" uid="uid://b6p8j7c4j0sqo" path="res://src/themes/menu.tres" id="3_dg0x7"]
 [ext_resource type="PackedScene" uid="uid://1ded2uqjo5xb" path="res://src/scenes/map_selector.tscn" id="4_nq2nu"]
 
 [node name="Menu" type="Control"]
@@ -14,7 +15,17 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("3_dg0x7")
 script = ExtResource("1_b5u5a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9295, 0.674198, 0.621319, 0.827451)
 
 [node name="principalMenu" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -23,87 +34,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -395.832
-offset_top = -267.892
-offset_right = 313.168
-offset_bottom = 226.108
+offset_left = -397.5
+offset_top = -304.5
+offset_right = 397.5
+offset_bottom = 304.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
+theme = ExtResource("3_dg0x7")
 
 [node name="TextureRect" type="TextureRect" parent="principalMenu"]
 layout_mode = 2
-texture = ExtResource("2_ju138")
+texture = ExtResource("2_au313")
 expand_mode = 5
 
-[node name="MapSelector" type="Button" parent="principalMenu"]
-layout_mode = 2
-text = "Map Selector"
-
-[node name="Options" type="Button" parent="principalMenu"]
-layout_mode = 2
-text = "Options"
-
-[node name="Quit" type="Button" parent="principalMenu"]
-layout_mode = 2
-text = "Quit"
-
-[node name="optionsMenu" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -254.5
-offset_top = -266.0
-offset_right = 254.5
-offset_bottom = 266.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="optionsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -239.5
-offset_top = -239.0
-offset_right = 239.5
-offset_bottom = 239.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="OptionsMenu" parent="optionsMenu/MarginContainer2" instance=ExtResource("2_w4bpy")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Back" type="Button" parent="optionsMenu/MarginContainer2"]
-custom_minimum_size = Vector2(100, 40)
+[node name="buttonsContainer" type="VBoxContainer" parent="principalMenu"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Back"
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="MapSelector" type="Button" parent="principalMenu/buttonsContainer"]
+layout_mode = 2
+theme = ExtResource("3_dg0x7")
+text = "     Map Selector    "
+
+[node name="Options" type="Button" parent="principalMenu/buttonsContainer"]
+layout_mode = 2
+theme = ExtResource("3_dg0x7")
+text = "Options"
+
+[node name="Quit" type="Button" parent="principalMenu/buttonsContainer"]
+layout_mode = 2
+theme = ExtResource("3_dg0x7")
+text = "Quit"
 
 [node name="mapSelectorMenu" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -574.832
-offset_top = -317.892
-offset_right = 576.168
-offset_bottom = 308.108
+offset_left = -575.5
+offset_right = 575.5
+offset_bottom = 634.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="mapSelector" parent="mapSelectorMenu" instance=ExtResource("4_nq2nu")]
 layout_mode = 2
@@ -114,8 +89,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Back"
 
-[connection signal="pressed" from="principalMenu/MapSelector" to="." method="_on_select_map_pressed"]
-[connection signal="pressed" from="principalMenu/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="principalMenu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="optionsMenu/MarginContainer2/Back" to="." method="_on_back_pressed"]
+[node name="optionsMenu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -256.0
+offset_right = 240.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsMenu" parent="optionsMenu" instance=ExtResource("2_w4bpy")]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="optionsMenu"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="principalMenu/buttonsContainer/MapSelector" to="." method="_on_select_map_pressed"]
+[connection signal="pressed" from="principalMenu/buttonsContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="principalMenu/buttonsContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="mapSelectorMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="optionsMenu/Back" to="." method="_on_back_pressed"]

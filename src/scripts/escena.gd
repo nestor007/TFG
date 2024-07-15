@@ -17,3 +17,17 @@ func textToSpeech():
 			AudioManagerScene.play_voices("res://src/sounds/label3d2.mp3")
 		elif $infoButton3/Label3D3.visible:
 			AudioManagerScene.play_voices("res://src/sounds/label3d3.mp3")
+
+
+func _voiced_activated(event : XRToolsPointerEvent):
+	var type := event.event_type
+	if type == XRToolsPointerEvent.Type.PRESSED:
+		if $Sprite3D.visible:
+			AudioManagerScene.play_voices("res://src/sounds/texto1.mp3")
+
+
+func _cerrar_sprite3D(event : XRToolsPointerEvent):
+	var type := event.event_type
+	if type == XRToolsPointerEvent.Type.PRESSED:
+		$Sprite3D.visible = false
+		$infoButton.visible = true

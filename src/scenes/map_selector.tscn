@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://src/scripts/map_selector.gd" id="1_ev4y1"]
 [ext_resource type="PackedScene" uid="uid://xkp68736u68b" path="res://src/scenes/zoneMap.tscn" id="2_ou6hr"]
+[ext_resource type="Theme" uid="uid://b6p8j7c4j0sqo" path="res://src/themes/menu.tres" id="2_y2lfb"]
 [ext_resource type="Texture2D" uid="uid://c343nr6s70c2c" path="res://src/images/zone1.jpg" id="3_0vxtw"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ydnh"]
-blend_mode = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_exw5x"]
 font_size = 32
@@ -19,51 +17,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_y2lfb")
 script = ExtResource("1_ev4y1")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -256.0
 offset_right = 376.0
-offset_bottom = 256.0
-grow_vertical = 2
+offset_bottom = 559.0
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -188.0
-offset_top = -256.0
 offset_right = 188.0
-offset_bottom = 256.0
+offset_bottom = 559.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Panel3" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
 offset_left = -376.0
-offset_top = -256.0
-offset_bottom = 256.0
+offset_bottom = 559.0
 grow_horizontal = 0
-grow_vertical = 2
 
-[node name="Panel4" type="Panel" parent="."]
+[node name="Panel4" type="PanelContainer" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_8ydnh")
 layout_mode = 2
 offset_right = 1152.0
-offset_bottom = 69.0
+offset_bottom = 48.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -73,11 +58,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -564.0
-offset_top = -306.0
+offset_top = -313.0
 offset_right = 564.0
-offset_bottom = 205.0
+offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_y2lfb")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2

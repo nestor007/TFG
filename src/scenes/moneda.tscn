@@ -5,6 +5,3 @@
 
 [node name="moneda_peque" instance=ExtResource("1_a8ahd")]
 script = ExtResource("2_lai1q")
-
-[node name="Armature" parent="." index="0"]
-transform = Transform3D(1, 0, 0.000846881, 0, 1, 0, -0.000846881, 0, 1, 0, 6.65316e-05, 0)

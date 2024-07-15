@@ -4,6 +4,10 @@ var voice_finished: bool = true
 var music_playing: String
 var ambientsfx_playing: String
 
+func _ready():
+	play_music("res://src/sounds/musicaEscenario.wav")
+	play_ambient_sfx("res://src/sounds/ambiental.mp3")
+
 func play_music(sound: String) -> void:
 	if sound != "":
 		music_playing = sound

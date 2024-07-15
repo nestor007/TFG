@@ -1,19 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1a7w42kjcwjd"]
+[gd_scene load_steps=6 format=3 uid="uid://d1a7w42kjcwjd"]
 
 [ext_resource type="Script" path="res://src/scripts/volumeSlider.gd" id="1_nbccd"]
 [ext_resource type="Script" path="res://src/scripts/volume_slider.gd" id="1_wi7xj"]
+[ext_resource type="Theme" uid="uid://b6p8j7c4j0sqo" path="res://src/themes/menu.tres" id="2_cw5tf"]
 [ext_resource type="Texture2D" uid="uid://cp4nne71i30h" path="res://src/images/sound_off.png" id="3_nsp7b"]
 [ext_resource type="Texture2D" uid="uid://b1fkx4pwhqop5" path="res://src/images/sound_off_inv.png" id="4_b37u8"]
 
 [node name="volumeSlider" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 20
 script = ExtResource("1_nbccd")
 
 [node name="volume" type="HSlider" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = ExtResource("2_cw5tf")
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_wi7xj")

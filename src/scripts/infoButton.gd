@@ -5,6 +5,7 @@ class_name Info
 
 func toggle_label():
 	sprite.visible = !sprite.visible
+	self.visible = !self.visible
 
 func _on_click_in_3DObject(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:

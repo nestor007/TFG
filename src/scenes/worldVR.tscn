@@ -1,75 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmlu6bb5y5hfs"]
+[gd_scene load_steps=9 format=3 uid="uid://bmlu6bb5y5hfs"]
 
-[ext_resource type="Script" path="res://src/scripts/world.gd" id="1_nyoc8"]
+[ext_resource type="Script" path="res://src/scripts/worldVR.gd" id="1_tmo2i"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
 [ext_resource type="Texture2D" uid="uid://bm1b3txaeuifm" path="res://src/images/Dorothy.png" id="4_4q0ng"]
 [ext_resource type="PackedScene" uid="uid://nu42r0tx7t44" path="res://src/scripts/player.tscn" id="4_w7dlm"]
-
-[sub_resource type="Animation" id="Animation_lypdq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3tui0"]
-resource_name = "fadeVR"
-length = 2.6
-
-[sub_resource type="Animation" id="Animation_2ypef"]
-resource_name = "fundidoNegro"
-length = 2.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.3, 2.6),
-"transitions": PackedFloat32Array(1, 0.3, 0.3),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 2.5, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1aj5"]
-_data = {
-"RESET": SubResource("Animation_lypdq"),
-"fadeVR": SubResource("Animation_3tui0"),
-"fundidoNegro": SubResource("Animation_2ypef")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tl4bj"]
 size = Vector3(1.5, 1.5, 0.3)
@@ -86,25 +20,14 @@ size = Vector3(300, 0.3, 300)
 size = Vector3(30, 1, 30)
 
 [node name="worldVR" type="Node3D"]
-script = ExtResource("1_nyoc8")
+script = ExtResource("1_tmo2i")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.77316, 0)
+light_energy = 3.0
+sky_mode = 1
 
 [node name="zone1Part1" parent="." instance=ExtResource("2_hkaxf")]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_j1aj5")
-}
 
 [node name="THE ABYSS" type="Sprite3D" parent="."]
 transform = Transform3D(573.476, 0, 0, 0, -2.50675e-05, 573.476, 0, -573.476, -2.50675e-05, 0, -1775.25, 0)
@@ -141,10 +64,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, -0.0033361, -0.00446144, 2.37091)
 mesh = SubResource("BoxMesh_c6mis")
 skeleton = NodePath("../..")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39368, 0)
-light_energy = 5.164
 
 [node name="player" parent="." instance=ExtResource("4_w7dlm")]
 

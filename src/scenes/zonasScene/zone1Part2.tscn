@@ -1,66 +1,55 @@
-[gd_scene load_steps=7 format=3 uid="uid://d18cprtbvybcr"]
+[gd_scene load_steps=8 format=3 uid="uid://dw0vc004gix5h"]
 
-[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_mx4os"]
-[ext_resource type="Texture2D" uid="uid://dpq2tjgrrkq28" path="res://src/hdris/imgz1p2.png" id="2_f2u8f"]
-[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_uicwd"]
-[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="4_pmcb2"]
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_qi6xb"]
+[ext_resource type="Texture2D" uid="uid://dpq2tjgrrkq28" path="res://src/hdris/imgz1p2.png" id="2_si17h"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_2iudl"]
+[ext_resource type="Texture2D" uid="uid://d3a3lo6wknccx" path="res://src/images/texts/texto1.png" id="4_btadf"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_dssko"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpitu"]
-albedo_texture = ExtResource("2_f2u8f")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
+shading_mode = 0
+albedo_texture = ExtResource("2_si17h")
+albedo_texture_force_srgb = true
+texture_filter = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
-material = SubResource("StandardMaterial3D_kpitu")
+material = SubResource("StandardMaterial3D_14dkn")
 flip_faces = true
 radial_segments = 32
 rings = 16
 
 [node name="zone1Part2" type="Node3D"]
-transform = Transform3D(-0.942618, 0, -0.333873, 0, 1, 0, 0.333873, 0, -0.942618, 0, 0, 0)
-script = ExtResource("1_mx4os")
+transform = Transform3D(0.937677, 0, 0.347508, 0, 1, 0, -0.347508, 0, 0.937677, 0, 0, 0)
+script = ExtResource("1_qi6xb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-7.41521, 0, -6.48258e-07, 0, 7.41521, 0, 6.48258e-07, 0, -7.41521, 0, 0, 0)
+transform = Transform3D(42.3474, 0, 1.14441e-05, 0, 38.3143, 0, -1.14441e-05, 0, 42.3474, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
-[node name="infoButton" parent="." instance=ExtResource("3_uicwd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274861)
+[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_2iudl")]
+transform = Transform3D(64.4636, 0, 1.90735e-06, 0, 64.4635, 0, -1.90735e-06, 0, 64.4636, -5.93593, 1.35626, 14.7141)
+sprite = NodePath("Sprite3D")
 
-[node name="Label3D" type="Label3D" parent="infoButton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757968, -1.25263)
+[node name="Sprite3D" type="Sprite3D" parent="infoButton"]
+transform = Transform3D(-0.0149989, 0, -3.25963e-09, 0, 0.0149989, 0, 3.25963e-09, 0, -0.0149989, -0.0300409, 0.0053194, -0.213239)
 visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "Prueba de text to speech 1"
-font_size = 12
+billboard = 2
+texture = ExtResource("4_btadf")
 
-[node name="infoButton2" parent="." instance=ExtResource("3_uicwd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147554, 0, 0)
-
-[node name="Label3D2" type="Label3D" parent="infoButton2"]
-transform = Transform3D(-0.0646717, 0, 0.997907, 0, 1, 0, -0.997907, 0, -0.0646717, -1.58003, 0.721266, -0.00802077)
-visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "zona bosque primera"
-font_size = 12
-
-[node name="infoButton3" parent="." instance=ExtResource("3_uicwd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164833, 0, 0)
-
-[node name="Label3D3" type="Label3D" parent="infoButton3"]
-transform = Transform3D(-0.0745436, 0, -0.997218, 0, 1, 0, 0.997218, 0, -0.0745436, 1.4854, 0.907684, 0.00263986)
-visible = false
-modulate = Color(1, 0.380392, 1, 1)
-text = "probando textos largos con puntos.
-Además de comas, punto y coma; junto con el punto doble:
-"
-font_size = 12
-
-[node name="tp" parent="." instance=ExtResource("4_pmcb2")]
-transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, 1.20229, -0.625788, -3.1206)
+[node name="tp" parent="." instance=ExtResource("5_dssko")]
+transform = Transform3D(31.8399, 0, 5.72205e-06, 0, 31.8399, 0, -5.72205e-06, 0, 31.8399, -7.14676, -0.826458, 15.7748)
 scene = "res://src/scenes/zonasScene/zone1Part1.tscn"
 
-[node name="tp2" parent="." instance=ExtResource("4_pmcb2")]
-transform = Transform3D(5.38546, 0, 0, 0, 5.38546, 0, 0, 0, 5.38546, -0.905835, -0.625787, 2.91102)
+[node name="tp2" parent="." instance=ExtResource("5_dssko")]
+transform = Transform3D(31.8399, 0, 5.72205e-06, 0, 31.8399, 0, -5.72205e-06, 0, 31.8399, 5.21076, -0.826458, -16.533)
 scene = "res://src/scenes/zonasScene/zone1Part3.tscn"
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 14.7871, 0)
+billboard = 1
+text = "2
+"
+font_size = 2000
 
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
 [connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]
