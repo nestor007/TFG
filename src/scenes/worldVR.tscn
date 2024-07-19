@@ -1,23 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmlu6bb5y5hfs"]
+[gd_scene load_steps=5 format=3 uid="uid://bmlu6bb5y5hfs"]
 
 [ext_resource type="Script" path="res://src/scripts/worldVR.gd" id="1_tmo2i"]
 [ext_resource type="PackedScene" uid="uid://d0hpdfsjee2d3" path="res://src/scenes/zonasScene/zone1Part1.tscn" id="2_hkaxf"]
-[ext_resource type="Texture2D" uid="uid://bm1b3txaeuifm" path="res://src/images/Dorothy.png" id="4_4q0ng"]
 [ext_resource type="PackedScene" uid="uid://nu42r0tx7t44" path="res://src/scripts/player.tscn" id="4_w7dlm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tl4bj"]
-size = Vector3(1.5, 1.5, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_neumd"]
-transparency = 1
-albedo_color = Color(0.00784314, 0, 0, 0.85098)
-
-[sub_resource type="BoxMesh" id="BoxMesh_c6mis"]
-material = SubResource("StandardMaterial3D_neumd")
-size = Vector3(300, 0.3, 300)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf8hl"]
-size = Vector3(30, 1, 30)
+size = Vector3(50, 50, 50)
 
 [node name="worldVR" type="Node3D"]
 script = ExtResource("1_tmo2i")
@@ -29,42 +17,6 @@ sky_mode = 1
 
 [node name="zone1Part1" parent="." instance=ExtResource("2_hkaxf")]
 
-[node name="THE ABYSS" type="Sprite3D" parent="."]
-transform = Transform3D(573.476, 0, 0, 0, -2.50675e-05, 573.476, 0, -573.476, -2.50675e-05, 0, -1775.25, 0)
-texture = ExtResource("4_4q0ng")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="THE ABYSS"]
-transform = Transform3D(1, 0, 0, 0, 1, -2.4869e-14, 0, 2.4869e-14, 1, 0, -8.34004e-08, 1.90798)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="THE ABYSS/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 4.0224e-09, -0.0920212)
-shape = SubResource("BoxShape3D_tl4bj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="THE ABYSS"]
-transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.28666e-07, 2.94352)
-mesh = SubResource("BoxMesh_c6mis")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="THE ABYSS"]
-transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.218e-07, 2.78645)
-mesh = SubResource("BoxMesh_c6mis")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="THE ABYSS"]
-transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.14268e-07, 2.61415)
-mesh = SubResource("BoxMesh_c6mis")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="THE ABYSS"]
-transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, 0, -1.09562e-07, 2.50648)
-mesh = SubResource("BoxMesh_c6mis")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="THE ABYSS"]
-transform = Transform3D(0.00174375, 0, 0, 0, -7.62218e-11, -0.00174375, 0, 0.00174375, -7.62218e-11, -0.0033361, -0.00446144, 2.37091)
-mesh = SubResource("BoxMesh_c6mis")
-skeleton = NodePath("../..")
-
 [node name="player" parent="." instance=ExtResource("4_w7dlm")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -72,7 +24,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.16767, 0)
 collision_layer = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08462, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
+shape = SubResource("BoxShape3D_sf8hl")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473083, 66.186, -0.900749)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
+shape = SubResource("BoxShape3D_sf8hl")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.256, 18.6611, 0)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
+shape = SubResource("BoxShape3D_sf8hl")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8063, 18.6611, 0)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
+shape = SubResource("BoxShape3D_sf8hl")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380287, 18.6611, 31.1595)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
+shape = SubResource("BoxShape3D_sf8hl")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380287, 18.6611, -31.1595)
+collision_layer = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2981, 0)
 shape = SubResource("BoxShape3D_sf8hl")
 
 [connection signal="site_interacted" from="zone1Part1" to="." method="_on_change_Scene_interacted"]

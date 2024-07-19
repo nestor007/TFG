@@ -15,7 +15,7 @@ script = ExtResource("1_nbccd")
 [node name="volume" type="HSlider" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 1
 theme = ExtResource("2_cw5tf")
 max_value = 1.0
 step = 0.001

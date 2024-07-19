@@ -114,8 +114,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Back"
 
+[connection signal="focus_entered" from="principalMenu/buttonsContainer/MapSelector" to="." method="_ejecute_sfx_sound"]
 [connection signal="pressed" from="principalMenu/buttonsContainer/MapSelector" to="." method="_on_select_map_pressed"]
+[connection signal="focus_entered" from="principalMenu/buttonsContainer/Options" to="." method="_ejecute_sfx_sound"]
 [connection signal="pressed" from="principalMenu/buttonsContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="principalMenu/buttonsContainer/Quit" to="." method="_ejecute_sfx_sound"]
 [connection signal="pressed" from="principalMenu/buttonsContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="mapSelectorMenu/Back" to="." method="_ejecute_sfx_sound"]
 [connection signal="pressed" from="mapSelectorMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="focus_entered" from="optionsMenu/Back" to="." method="_ejecute_sfx_sound"]
 [connection signal="pressed" from="optionsMenu/Back" to="." method="_on_back_pressed"]

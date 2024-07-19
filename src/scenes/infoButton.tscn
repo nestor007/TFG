@@ -13,7 +13,7 @@ script = ExtResource("1_v0cxl")
 transform = Transform3D(0.0750309, 0.000130954, 0.997181, -0.00174533, 0.999998, 0, -0.99718, -0.00174041, 0.075031, 0, 0, 0)
 
 [node name="moneda3D" type="StaticBody3D" parent="moneda_peque"]
-transform = Transform3D(1, 0, 0, 1.16415e-10, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 1.16415e-10, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 collision_layer = 1048577
 script = ExtResource("3_xrb3x")
 

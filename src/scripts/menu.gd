@@ -20,5 +20,5 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 
-
-
+func _ejecute_sfx_sound():
+	AudioManagerScene.play_sfx("res://src/sounds/boton.wav")
