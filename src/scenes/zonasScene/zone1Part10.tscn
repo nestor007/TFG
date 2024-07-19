@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjxvtc1lwnume"]
+
+[ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_qkfjp"]
+[ext_resource type="Texture2D" uid="uid://ci8r0luv872jl" path="res://src/hdris/imgz1p10.jpg" id="2_lwvuf"]
+[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_7ml87"]
+[ext_resource type="Texture2D" uid="uid://d3a3lo6wknccx" path="res://src/images/texts/texto1.png" id="4_g1dii"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/interactable_body.gd" id="5_p6mex"]
+[ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="6_3c35b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
+shading_mode = 0
+albedo_texture = ExtResource("2_lwvuf")
+albedo_texture_force_srgb = true
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ywa3"]
+material = SubResource("StandardMaterial3D_14dkn")
+flip_faces = true
+radial_segments = 32
+rings = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c7p53"]
+
+[node name="zone1Part1" type="Node3D"]
+transform = Transform3D(-0.633773, 0, 0.773519, 0, 1, 0, -0.773519, 0, -0.633773, 0, 0, 0)
+script = ExtResource("1_qkfjp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(42.3474, 0, 9.53674e-06, 0, 38.3143, 0, -9.53674e-06, 0, 42.3474, 0, 0, 0)
+mesh = SubResource("SphereMesh_7ywa3")
+
+[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_7ml87")]
+transform = Transform3D(64.4636, 0, 1.90735e-06, 0, 64.4635, 0, -1.90735e-06, 0, 64.4636, -5.93593, 1.35626, 14.7141)
+sprite = NodePath("../Sprite3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.250248, 0, 0.933937, 0, 0.966882, 0, -0.933937, 0, -0.250248, -7.87247, 1.69917, 0.967943)
+visible = false
+texture = ExtResource("4_g1dii")
+
+[node name="voz" type="StaticBody3D" parent="Sprite3D"]
+transform = Transform3D(1.9403, 0, -3.26721e-07, 0, 1.9403, 0, 3.26721e-07, 0, 1.9403, -1.66628, -4.22071, -0.0569556)
+collision_layer = 5242881
+script = ExtResource("5_p6mex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/voz"]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_c7p53")
+
+[node name="cerrar" type="StaticBody3D" parent="Sprite3D"]
+transform = Transform3D(1.76127, 0, -5.52082e-07, 0, 1.76127, 0, 5.52082e-07, 0, 1.76127, 1.69641, -4.22116, -0.0566946)
+collision_layer = 5242881
+script = ExtResource("5_p6mex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/cerrar"]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_c7p53")
+
+[node name="tp" parent="." instance=ExtResource("6_3c35b")]
+transform = Transform3D(31.8399, 0, 7.62939e-06, 0, 31.8399, 0, -7.62939e-06, 0, 31.8399, -11.4631, -0.826458, -11.5973)
+scene = "res://src/scenes/zonasScene/zone1Part11.tscn"
+
+[node name="tp2" parent="." instance=ExtResource("6_3c35b")]
+transform = Transform3D(31.8399, 0, 7.62939e-06, 0, 31.8399, 0, -7.62939e-06, 0, 31.8399, 16.3445, -0.826458, 10.6296)
+scene = "res://src/scenes/zonasScene/zone1Part9.tscn"
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 14.7871, 0)
+billboard = 1
+text = "10
+"
+font_size = 2000
+
+[connection signal="pointer_event" from="Sprite3D/voz" to="." method="_voiced_activated"]
+[connection signal="pointer_event" from="Sprite3D/cerrar" to="." method="_cerrar_sprite3D"]
+[connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
+[connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]

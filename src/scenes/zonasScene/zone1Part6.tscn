@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr8230en8l6wx"]
+[gd_scene load_steps=6 format=3 uid="uid://cr8230en8l6wx"]
 
 [ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_uljoe"]
 [ext_resource type="Texture2D" uid="uid://dbvu1ao2arqx8" path="res://src/hdris/imgz1p6.png" id="2_2u8yp"]
-[ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_h3n8j"]
-[ext_resource type="Texture2D" uid="uid://d3a3lo6wknccx" path="res://src/images/texts/texto1.png" id="4_eacd6"]
 [ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_cwlpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
@@ -26,16 +24,6 @@ script = ExtResource("1_uljoe")
 transform = Transform3D(42.3474, 0, 9.53674e-06, 0, 38.3143, 0, -9.53674e-06, 0, 42.3474, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
 
-[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_h3n8j")]
-transform = Transform3D(64.4636, 0, 1.90735e-06, 0, 64.4635, 0, -1.90735e-06, 0, 64.4636, -5.93593, 1.35626, 14.7141)
-sprite = NodePath("Sprite3D")
-
-[node name="Sprite3D" type="Sprite3D" parent="infoButton"]
-transform = Transform3D(-0.0149989, 0, -3.25963e-09, 0, 0.0149989, 0, 3.25963e-09, 0, -0.0149989, -0.0300409, 0.0053194, -0.213239)
-visible = false
-billboard = 2
-texture = ExtResource("4_eacd6")
-
 [node name="tp" parent="." instance=ExtResource("5_cwlpl")]
 transform = Transform3D(31.8399, 0, 6.67572e-06, 0, 31.8399, 0, -6.67572e-06, 0, 31.8399, -17.1099, -0.826458, 1.83556)
 scene = "res://src/scenes/zonasScene/zone1Part7.tscn"
@@ -46,6 +34,7 @@ scene = "res://src/scenes/zonasScene/zone1Part5.tscn"
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 14.7871, 0)
+visible = false
 billboard = 1
 text = "6
 "

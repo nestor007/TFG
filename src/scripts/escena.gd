@@ -23,7 +23,11 @@ func _voiced_activated(event : XRToolsPointerEvent):
 	var type := event.event_type
 	if type == XRToolsPointerEvent.Type.PRESSED:
 		if $Sprite3D.visible:
-			AudioManagerScene.play_voices("res://src/sounds/texto1.mp3")
+			if AudioManagerScene.voice_finished:
+				AudioManagerScene.play_voices($Sprite3D.voice)
+			else:
+				AudioManagerScene.play_voices("")
+				AudioManagerScene.voice_finished = true
 
 
 func _cerrar_sprite3D(event : XRToolsPointerEvent):

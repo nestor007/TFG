@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn3xqso27qffm"]
+[gd_scene load_steps=11 format=3 uid="uid://dn3xqso27qffm"]
 
 [ext_resource type="Script" path="res://src/scripts/escena.gd" id="1_idljn"]
 [ext_resource type="Texture2D" uid="uid://plurom4wvc26" path="res://src/hdris/imgz1p5.png" id="2_rmg6t"]
 [ext_resource type="PackedScene" uid="uid://didkxmxjo0jkk" path="res://src/scenes/infoButton.tscn" id="3_yqen5"]
-[ext_resource type="Texture2D" uid="uid://d3a3lo6wknccx" path="res://src/images/texts/texto1.png" id="4_hj2py"]
 [ext_resource type="PackedScene" uid="uid://c1s6ks4ddkhk4" path="res://src/scenes/tp.tscn" id="5_7gqvr"]
+[ext_resource type="Texture2D" uid="uid://dswurdm1kr3ob" path="res://src/images/texts/texto2.png" id="5_vihsn"]
+[ext_resource type="Script" path="res://src/scripts/voiceToSprite.gd" id="6_1pdwc"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/interactable_body.gd" id="6_60o5s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dkn"]
 shading_mode = 0
@@ -18,6 +20,8 @@ flip_faces = true
 radial_segments = 32
 rings = 16
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_is53s"]
+
 [node name="zone1Part5" type="Node3D"]
 transform = Transform3D(0.986098, 0, 0.166166, 0, 1, 0, -0.166166, 0, 0.986098, 0, 0, 0)
 script = ExtResource("1_idljn")
@@ -25,16 +29,6 @@ script = ExtResource("1_idljn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(42.3474, 0, 9.53674e-06, 0, 38.3143, 0, -9.53674e-06, 0, 42.3474, 0, 0, 0)
 mesh = SubResource("SphereMesh_7ywa3")
-
-[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_yqen5")]
-transform = Transform3D(64.4636, 0, 1.90735e-06, 0, 64.4635, 0, -1.90735e-06, 0, 64.4636, -5.93593, 1.35626, 14.7141)
-sprite = NodePath("Sprite3D")
-
-[node name="Sprite3D" type="Sprite3D" parent="infoButton"]
-transform = Transform3D(-0.0149989, 0, -3.25963e-09, 0, 0.0149989, 0, 3.25963e-09, 0, -0.0149989, -0.0300409, 0.0053194, -0.213239)
-visible = false
-billboard = 2
-texture = ExtResource("4_hj2py")
 
 [node name="tp" parent="." instance=ExtResource("5_7gqvr")]
 transform = Transform3D(31.8399, 0, 6.67572e-06, 0, 31.8399, 0, -6.67572e-06, 0, 31.8399, -3.31789, -0.826458, 17.6258)
@@ -51,5 +45,36 @@ text = "5
 "
 font_size = 2000
 
+[node name="infoButton" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_yqen5")]
+transform = Transform3D(64.4636, 0, 1.14441e-05, 0, 64.4635, 0, -1.14441e-05, 0, 64.4636, 17.1077, 1.35626, 7.13394)
+sprite = NodePath("../Sprite3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.451777, 0, -0.854845, 0, 0.966882, 0, 0.854845, 0, -0.451777, 7.30869, -0.39633, 5.13915)
+visible = false
+texture = ExtResource("5_vihsn")
+script = ExtResource("6_1pdwc")
+voice = "res://src/sounds/texto2.mp3"
+
+[node name="voz" type="StaticBody3D" parent="Sprite3D"]
+transform = Transform3D(1.9403, 0, -3.26721e-07, 0, 1.9403, 0, 3.26721e-07, 0, 1.9403, -1.66628, -4.22071, -0.0569556)
+collision_layer = 5242881
+script = ExtResource("6_60o5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/voz"]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_is53s")
+
+[node name="cerrar" type="StaticBody3D" parent="Sprite3D"]
+transform = Transform3D(1.76127, 0, -5.52082e-07, 0, 1.76127, 0, 5.52082e-07, 0, 1.76127, 1.69641, -4.22116, -0.0566946)
+collision_layer = 5242881
+script = ExtResource("6_60o5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/cerrar"]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_is53s")
+
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
 [connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]
+[connection signal="pointer_event" from="Sprite3D/voz" to="." method="_voiced_activated"]
+[connection signal="pointer_event" from="Sprite3D/cerrar" to="." method="_cerrar_sprite3D"]

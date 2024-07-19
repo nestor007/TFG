@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nu42r0tx7t44"]
+[gd_scene load_steps=17 format=3 uid="uid://nu42r0tx7t44"]
 
 [ext_resource type="Script" path="res://src/scripts/xrInputs.gd" id="1_gn5uy"]
 [ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="2_ndcug"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="7_746c2"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="8_7xyhg"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_3f21r"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="10_1we1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2fbp"]
 transparency = 1
@@ -156,13 +155,7 @@ libraries = {
 "": SubResource("AnimationLibrary_021bc")
 }
 
-[node name="PlayerBody" type="CharacterBody3D" parent="." groups=["player_body"] instance=ExtResource("9_3f21r")]
-process_priority = -100
-process_physics_priority = -100
-top_level = true
-collision_layer = 524288
-collision_mask = 1023
-script = ExtResource("10_1we1h")
+[node name="PlayerBody" parent="." instance=ExtResource("9_3f21r")]
 
 [connection signal="button_pressed" from="XRController3D L" to="." method="_on_xr_controller_3d_l_button_pressed"]
 [connection signal="button_pressed" from="XRController3D R" to="." method="_on_xr_controller_3d_l_button_pressed"]

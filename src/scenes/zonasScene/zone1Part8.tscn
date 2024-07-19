@@ -22,7 +22,7 @@ rings = 16
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7p53"]
 
 [node name="zone1Part1" type="Node3D"]
-transform = Transform3D(-0.935875, 0, 0.352331, 0, 1, 0, -0.352331, 0, -0.935875, 0, 0, 0)
+transform = Transform3D(0.833278, 0, -0.552853, 0, 1, 0, 0.552853, 0, 0.833278, 0, 0, 0)
 script = ExtResource("1_710ma")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -57,8 +57,12 @@ transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_c7p53")
 
 [node name="tp" parent="." instance=ExtResource("6_3an5m")]
-transform = Transform3D(31.8399, 0, 6.67572e-06, 0, 31.8399, 0, -6.67572e-06, 0, 31.8399, 6.58375, -0.826458, 18.1749)
+transform = Transform3D(31.8399, 0, 7.62939e-06, 0, 31.8399, 0, -7.62939e-06, 0, 31.8399, 10.7755, -0.826458, 16.0769)
 scene = "res://src/scenes/zonasScene/zone1Part2.tscn"
+
+[node name="tp2" parent="." instance=ExtResource("6_3an5m")]
+transform = Transform3D(31.8399, 0, 7.62939e-06, 0, 31.8399, 0, -7.62939e-06, 0, 31.8399, -9.66709, -0.826458, -14.6638)
+scene = "res://src/scenes/zonasScene/zone1Part9.tscn"
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 14.7871, 0)
@@ -70,3 +74,4 @@ font_size = 2000
 [connection signal="pointer_event" from="Sprite3D/voz" to="." method="_voiced_activated"]
 [connection signal="pointer_event" from="Sprite3D/cerrar" to="." method="_cerrar_sprite3D"]
 [connection signal="tpRing_interacted" from="tp" to="." method="_on_ring_tp_ring_interacted"]
+[connection signal="tpRing_interacted" from="tp2" to="." method="_on_ring_tp_ring_interacted"]
